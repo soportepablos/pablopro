@@ -1,5 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+#Carpeta con codigo de prueba
+testhtml
 # compiled output
 /dist
 /tmp
