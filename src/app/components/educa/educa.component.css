@@ -1,0 +1,23 @@
+.list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-radius: 0.5rem;
+  }
+  .list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    border: 0.125rem solid rgba(0, 0, 0, 0.125);
+  }
+  .list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+  }
+  
