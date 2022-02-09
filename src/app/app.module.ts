@@ -9,6 +9,16 @@ import { ExperiComponent } from './components/experi/experi.component';
 import { EducaComponent } from './components/educa/educa.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { WebComponent } from './components/web/web.component';
+
+import { RouteModule } from './route/route.module';
+import {APP_BASE_HREF} from '@angular/common';
+import { FormsModule } from '@angular/forms';
+// import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -19,12 +29,18 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
     ExperiComponent,
     EducaComponent,
     SkillsComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    FooterComponent,
+    LoginComponent,
+    WebComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouteModule,
+    // ReactiveFormsModule
+    FormsModule
   ],
-  providers: [],
+  providers: [ {provide: APP_BASE_HREF, useValue: '/'} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
