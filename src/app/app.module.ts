@@ -16,7 +16,8 @@ import { WebComponent } from './components/web/web.component';
 import { RouteModule } from './route/route.module';
 import {APP_BASE_HREF} from '@angular/common';
 import { FormsModule } from '@angular/forms';
-// import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -37,8 +38,9 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     RouteModule,
-    // ReactiveFormsModule
-    FormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [ {provide: APP_BASE_HREF, useValue: '/'} ],
   bootstrap: [AppComponent]

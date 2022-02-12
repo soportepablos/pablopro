@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavmenuComponent implements OnInit {
 
+
+  // lo de adentro de () injecto el servicio
   constructor() { }
 
   ngOnInit(): void {
+  
+
   }
 
 }

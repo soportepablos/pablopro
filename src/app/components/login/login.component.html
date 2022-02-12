@@ -1,41 +1,30 @@
 <!-- Portfolio Modal 1-->
 
-<!-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <form>
-                <div class=" d-flex justify-content-center">
-                    <h3> Ingreso al sistema </h3>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Usuario</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Clave</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-        </div>
-    </div>
-</div> -->
-
 <div class="container ">
+    <form [formGroup]="form" class="m-5" (ngSubmit)="logIn($event)" >
     <div class="row justify-content-center">
         <div class="col-lg-4">
-            <label for="exampleFormControlInput1" class="form-label">UserName</label>
-            <input [(ngModel)]="user.user_name" type="text" class="form-control" >
+            <label  class="form-label">UserName</label>
+            <input class="form-control" type="text" formControlName="user_name" 
+                [ngClass]="{'is-invalid':user_name?.errors && user_name?.touched,
+                'is-valid':!user_name?.errors && user_name?.touched}"
+            >
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-lg-4">
             <label for="exampleFormControlTextarea1" class="form-label">Password</label>
-            <input [(ngModel)]="user.user_pass"  class="form-control" type="password">
+            <input class="form-control" type="password" formControlName="user_pass">
         </div>
     <div class="row text-center justify-content-center">
         <div class="col-lg-4 p-3">
-            <button class="btn btn-primary" (click)="logIn()" >Login</button>
+            <button class="btn btn-primary"  [disabled]="!form.valid">Login</button> 
+            <!-- (click)="logIn()" -->
         </div>
     </div>
+    <div class="row text-center justify-content-center" *ngIf="user_name?.errors && user_name?.touched">
+        <p *ngIf="user_name?.hasError('required')" class="text-danger"> Informacion Requerida</p>
+        <p *ngIf="user_name?.hasError('minlength')" class="text-danger"> Longitud Requerida</p>
+    </div>
 </div>
+</form>
