@@ -30,3 +30,28 @@ ul.timeline > li:before {
   z-index: 400;
 }
 /* end TimeLine */
+
+/* Boton Edicion */
+.btn-edit {
+  background-color: rgb(20, 184, 184);
+  border-radius: 100%;
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  float: right;
+}
+/* Boton Eliminar */
+.btn-trash {
+  background-color: rgb(241, 165, 114);
+  border-radius: 100%;
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  float: right;
+}

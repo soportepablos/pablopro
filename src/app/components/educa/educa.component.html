@@ -6,8 +6,22 @@
             <div class="col-lg-10 ">
                 <!-- About Section Heading-->
                 <h2>Educacion</h2>
-                <div class="list-group justify-content-start">
-                    <a href="#" class="list-group-item  active">
+
+                    <span *ngFor="let data of lista" class="list-group">
+                    <a href="#" class="list-group-item ">
+                        <a *ngIf="edited" class=" btn btn-edit btn-outline-light " href="#EDIT"><i class="fa fa-pen"></i></a>
+                         <a *ngIf="edited" class=" btn btn-trash btn-outline-light" href="#TRASH"><i class="fa fa-trash "></i></a>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-1 d-inline p-1 bg-primary text-white ">{{data.dt_title}}</h5>
+                            <!-- <small>2022</small> -->
+                        </div>
+                            <p class="mb-1">{{data.dt_text}}
+                            </p>
+                            <small>{{data.dt_year}}</small>
+                    </a>     
+                    </span>
+    <!--        
+                     <a href="#" class="list-group-item  active">
                         <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">Full Stack Developer Jr.</h5>
                         <small>2022</small>
@@ -19,12 +33,13 @@
                     </a>
                     <a href="#" class="list-group-item ">
                         <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Curso PHP - MySQL</h5>
-                        <small class="text-muted">2008</small>
+                            <h5 class="mb-1">Curso PHP - MySQL</h5>
+                            <small class="text-muted">2008</small>
                         </div>
                         <p class="mb-1">Ya con conocimiento en FrontEnd, presto interes sobre BackEnd y recorro cursos de PHP y MySQL hasta el dia de la fecha.</p>
                         <small class="text-muted">2000 - 2004</small>
                     </a>
+                    
                     <a href="#" class="list-group-item ">
                         <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">HTML - CSS3 </h5>
@@ -56,8 +71,8 @@
                         </div>
                         <p class="mb-1">Como parte de mi trabajo incremento mi conocimiento en redes</p>
                         <small class="text-muted">2003 - 2005</small>
-                    </a>
-                </div>
+                    </a> -->
+
             </div>
         </div>
     </div>

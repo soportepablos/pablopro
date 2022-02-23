@@ -41,7 +41,8 @@ export class LoginComponent implements OnInit {
     
     event.preventDefault;
     this.authService.singin(this.form.value).subscribe(data=>{
-      //console.log("DATA:" + JSON.stringify(data)); // muestro la data recibida por JSON
+      //console.log(this.form.value);
+      console.log("DATA:" + JSON.stringify(data)); // muestro el return data; del archivo auth.service recibida por JSON en 
       this.ruta.navigate(['/web']);
     });
   }

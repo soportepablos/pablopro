@@ -3,34 +3,66 @@
     <div class="container ">
         <div class="row justify-content-center">
             <div class="col-lg-10 ">
-                <!-- About Section Heading-->
+                <a class="btn btn-edit btn-outline-light" href="#!"> <i class="fa fa-pen-nib"></i></a>
+            <!-- About Section Heading-->
+            <h2 class="font-weight-bold ">Experiencia</h2>
+            
+            <ul *ngFor="let data of lista" class="timeline">
+                <li>
+
+                   
+
+                    <a *ngIf="edited" class="btn btn-edit btn-outline-light" href="#!"> <i class="fa fa-pen"></i></a>
+                    <a *ngIf="edited" class="btn btn-trash btn-outline-light" href="#!"><i class="fa fa-trash "></i></a>
+                    <p class="d-inline p-1 bg-primary text-white">{{data.dt_year}} - {{data.dt_title}}</p>
+                    <p>{{data.dt_text}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- experi-->
+<!-- <section class="page-section mb-0">
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 ">
+                <a class="btn btn-edit btn-outline-light" href="#!"> <i class="fa fa-pen"></i></a>
                 <h2 class="font-weight-bold ">Experiencia</h2>
                 <ul class="timeline">
                     <li>
+                        <a class="btn btn-trash btn-outline-light" href="#!"><i class="fa fa-trash "></i></a>
                         <p class="d-inline p-1 bg-primary text-white">2017 a la fecha - Supervisor Regional Soporte Interior</p>
                         <p>Desde el 2017 a cargo de toda la Region II y XI que abarca todo Misiones y parte de Corrientes. Brindando soporte, coordinacion 
                             y logistica junto a personal a cargo</p>
                     </li>
                     <li>
+                        
                         <p class="d-inline p-1 bg-primary text-white">2007 - Soporte Jurisdiccion Iguazu - Misiones</p>
                         <p>Paso a formar parte de la Direccion de Sistemas, prestando servicio como soporte tecnico especializado para la Direccion 
                             Nacional de Migraciones</p>
                     </li>
                     <li>
+                        
                         <p class="d-inline p-1 bg-primary text-white">2004 - Grupo Sagitario</p>
                         <p>Formando parte de una empresa de servicios a cargo del sector informatico como desarrollador y tecnico.</p>
                     </li>
             
                     <li>
+                        
                         <p class="d-inline p-1 bg-primary text-white">2000 - Thompson Friedman</p>
                         <p>Miembro del soporte tecnico, prestando servicios en toda la provincia de Santa Fe. adquiriendo experiencia en desarrollo 
                             FrontEnd y BackEnd y en plataformas cliente servidor</p>
                     </li>
                     <li>
+                        
                         <p class="d-inline p-1 bg-primary text-white">1998 - Unipport</p>
                         <p>Ingreso por primera vez a formar parte de un equipo dedicado a prestar servicios tecnicos y de administracion de servidores.</p>
                     </li>
                     <li>
+                        
                         <p class="d-inline p-1 bg-primary text-white">1996 - Soluciones informaticas</p>
                         <p>Luego de adquirir conocimientos como Analista de Sistemas comienzo a inscurcionar en el mundo de la informatica, 
                             como soporte tecnico y desarrollador.</p>
@@ -39,4 +71,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->

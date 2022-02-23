@@ -1,9 +1,9 @@
 .list-group {
     display: flex;
     flex-direction: column;
-    padding-left: 0;
-    margin-bottom: 0;
-    border-radius: 0.5rem;
+    /* padding-left: 0; */
+    /* margin-bottom: 0; */
+    /* border-radius: 0.5rem; */
   }
   .list-group-item {
     position: relative;
@@ -12,12 +12,53 @@
     color: #212529;
     text-decoration: none;
     background-color: #fff;
-    border: 0.125rem solid rgba(0, 0, 0, 0.125);
+    /* border: 0.125rem solid rgba(0, 0, 0, 0.125); */
   }
   .list-group-item.active {
     z-index: 2;
     color: #fff;
     background-color: #1abc9c;
-    border-color: #1abc9c;
+    /* border-color: #1abc9c; */
   }
   
+  /* Boton Edicion */
+.btn-edit {
+  background-color: rgb(20, 184, 184);
+  border-radius: 100%;
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  float: right;
+}
+/* Boton Eliminar */
+.btn-trash {
+  background-color: rgb(241, 165, 114);
+  border-radius: 100%;
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  float: right;
+}
+
+/* .butflote {
+  float: right;
+  width: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  height:40px;
+  overflow:auto;
+}
+.butflott {
+  float: right;
+  width: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  height:40px;
+  overflow:auto;
+} */
