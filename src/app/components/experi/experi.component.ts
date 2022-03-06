@@ -10,10 +10,23 @@ export class ExperiComponent implements OnInit {
 
   constructor(private authService:AuthService) { }
 
-  public edited = true;
+  public edited = false;
 
   ngOnInit(): void {
     this.cargarData();
+    this.isLog();
+  }
+
+  // Verificar si esta logeado para saber si habilita la edicion o no
+  isLog(){
+    this.authService.isAuth()
+      .subscribe((result)=>{
+        if (result.user_role == "admin") {
+            this.edited = true;
+          }else{
+            this.edited = false;
+        }
+    });
   }
 
 
@@ -30,9 +43,9 @@ export class ExperiComponent implements OnInit {
     this.authService.datos("experi")
       .subscribe((result)=>{
         this.lista = result;
-      //console.log(result);
     });
     //console.log(this.lista1);
   }
 
+ 
 }

@@ -11,8 +11,8 @@ import { WebComponent } from '../components/web/web.component';
 const routes: Routes = [
   { path: 'web', component: WebComponent },
   { path: 'logeo', component:LoginComponent},
+  { path: 'logout', component:LoginComponent},
   { path: '**', pathMatch:'full', redirectTo:'web'}
-  // { path: '', redirectTo:'web',pathMatch:'full'}
 ];
 
 

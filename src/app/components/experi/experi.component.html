@@ -9,9 +9,6 @@
             
             <ul *ngFor="let data of lista" class="timeline">
                 <li>
-
-                   
-
                     <a *ngIf="edited" class="btn btn-edit btn-outline-light" href="#!"> <i class="fa fa-pen"></i></a>
                     <a *ngIf="edited" class="btn btn-trash btn-outline-light" href="#!"><i class="fa fa-trash "></i></a>
                     <p class="d-inline p-1 bg-primary text-white">{{data.dt_year}} - {{data.dt_title}}</p>
