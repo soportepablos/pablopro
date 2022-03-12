@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-experi',
@@ -7,12 +10,34 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./experi.component.css']
 })
 export class ExperiComponent implements OnInit {
+  
+  public formDatos = new FormGroup({
+    dt_title: new FormControl('',Validators.required),
+    dt_year: new FormControl('',Validators.required),
+    dt_text: new FormControl('',Validators.required),
+    dt_status: new FormControl(''),
+    dt_id: new FormControl(''),
+    dt_theme: new FormControl('')
+  });
 
-  constructor(private authService:AuthService) { }
+  //public formDatos : FormGroup;
+  
+  
+  constructor(private authService:AuthService, 
+              private ruta:Router,
+              private formBuilder:FormBuilder
+  ) { }
 
   public edited = false;
 
   ngOnInit(): void {
+    // this.formDatos = this.formBuilder.group( {
+    //   titulo:[''],
+    //   anio:[''], 
+    //   info:[''],
+    //   estado:['']
+    // });
+
     this.cargarData();
     this.isLog();
   }
@@ -29,15 +54,7 @@ export class ExperiComponent implements OnInit {
     });
   }
 
-
-  // public lista:any = [];
-  // cargarData(){
-  //   this.authService.datos()
-  //     .subscribe(dt => {
-  //       this.lista = dt;
-  //   })
-  // }
-
+  /// carga datos sobre experiencia (experi)
   public lista:any = [];
   cargarData(){
     this.authService.datos("experi")
@@ -47,5 +64,32 @@ export class ExperiComponent implements OnInit {
     //console.log(this.lista1);
   }
 
- 
+  /// envio de informacion para la modificacion
+  send(): any {
+    console.log(this.formDatos.value);
+  }
+  
+  public dato:any = [];
+  modificar(id:any){
+    this.authService.datoTipo(id)
+      .subscribe((dati)=>{
+        this.dato = dati;
+        if (this.dato[0].dt_status === 0){
+          this.dato[0].status = true;
+        }else{ this.dato[0].status = false; }
+        this.formDatos.patchValue(this.dato[0]);
+      });
+  }
+
+
+    // public lista:any = [];
+  // cargarData(){
+  //   this.authService.datos()
+  //     .subscribe(dt => {
+  //       this.lista = dt;
+  //   })
+  // }
+
+  
 }
+

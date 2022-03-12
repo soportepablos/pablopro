@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
 
       //console.log("DATA:" + JSON.stringify(data)); // muestro el return data; del archivo auth.service recibida por JSON en 
       //console.log(data); // muestro el return data; del archivo auth.service recibida por JSON en 
-
+      
       this.ruta.navigate(['/web']); //vuelve a la ruta web.
     });
   }

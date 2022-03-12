@@ -14,12 +14,12 @@ export class AuthService {
   private URL = 'http://localhost:3000/singin'; // envio el form con usuario y pass
   private urlDatos = 'http://localhost:3000/datos'; //le envio theme (experi o educa)
   private urlTest =  'http://localhost:3000/test'; // envio token y me devuelve usuario y rol
-  private urlGet = 'http://localhost:3000';
+  private urlDato = 'http://localhost:3000';
 
 
   constructor(private http: HttpClient) { 
     //para saber si mi servicio esta corriendo
-    console.log("el servicio corre");
+    console.log("Lectura de la Api corriendo!");
   }
   
   // metodo para iniciar la sesion recibe las credenciales del usuario 
@@ -55,6 +55,15 @@ export class AuthService {
     // console.log("ESTO : ", this.http.post(this.urlDatos1,theme));
     return this.http.post(this.urlDatos,{dt_theme:theme});
   }    
-    
+  
+  datoTipo(id:any):Observable<any>
+  {
+    //console.log('DATOOOOSSS: ',theme);
+    // console.log("ESTO : ", this.http.post(this.urlDatos1,theme));
+    return this.http.post(this.urlDato,{dt_id:id});
+  } 
+  
+
+
 }
   /// este servicio lo consumismo desde nuestro login por lo que instanciamos ahi.

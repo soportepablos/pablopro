@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from '../components/login/login.component';
 import { WebComponent } from '../components/web/web.component';
+import { CrudatosComponent } from '../components/crudatos/crudatos.component';
 
 
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'web', component: WebComponent },
   { path: 'logeo', component:LoginComponent},
   { path: 'logout', component:LoginComponent},
+  { path: 'crud/:id', component:CrudatosComponent},
   { path: '**', pathMatch:'full', redirectTo:'web'}
 ];
 
