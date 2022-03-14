@@ -11,17 +11,16 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ExperiComponent implements OnInit {
   
+
+  // creo el formDatos para poder modificar..................
   public formDatos = new FormGroup({
     dt_title: new FormControl('',Validators.required),
-    dt_year: new FormControl('',Validators.required),
     dt_text: new FormControl('',Validators.required),
+    dt_year: new FormControl('',Validators.required),
     dt_status: new FormControl(''),
     dt_id: new FormControl(''),
     dt_theme: new FormControl('')
   });
-
-  //public formDatos : FormGroup;
-  
   
   constructor(private authService:AuthService, 
               private ruta:Router,
@@ -31,15 +30,8 @@ export class ExperiComponent implements OnInit {
   public edited = false;
 
   ngOnInit(): void {
-    // this.formDatos = this.formBuilder.group( {
-    //   titulo:[''],
-    //   anio:[''], 
-    //   info:[''],
-    //   estado:['']
-    // });
-
-    this.cargarData();
-    this.isLog();
+    this.cargarData(); // trae lista para mostrar
+    this.isLog(); // virifica si esta logeado
   }
 
   // Verificar si esta logeado para saber si habilita la edicion o no
@@ -54,7 +46,7 @@ export class ExperiComponent implements OnInit {
     });
   }
 
-  /// carga datos sobre experiencia (experi)
+  /// carga datos para mostrar sobre experiencia (experi)
   public lista:any = [];
   cargarData(){
     this.authService.datos("experi")
@@ -64,13 +56,10 @@ export class ExperiComponent implements OnInit {
     //console.log(this.lista1);
   }
 
-  /// envio de informacion para la modificacion
-  send(): any {
-    console.log(this.formDatos.value);
-  }
-  
+  /// Toma los datos de la base segun el registro seleccionado 
+  /// y lo muestra en el modal para modificar
   public dato:any = [];
-  modificar(id:any){
+  tomaDatos(id:any){
     this.authService.datoTipo(id)
       .subscribe((dati)=>{
         this.dato = dati;
@@ -80,8 +69,27 @@ export class ExperiComponent implements OnInit {
         this.formDatos.patchValue(this.dato[0]);
       });
   }
+ 
+  ///ACTUALIZAR FORMULARIO
+  actualizar(): any {
+    console.log(this.formDatos.value);
+  }
 
+  //ELIMINAR FORMULARIO
+  eliminar(): any {
+    console.log(this.formDatos.value);
+  }
 
+  // BLANQUEAR FORMULARIO ANTES DE CREAR EL NUEVO
+  blanqueo(): any {
+    this.formDatos.reset();
+    console.log(this.formDatos.value);
+  }
+  nuevoExperi(): any {
+    console.log(this.formDatos.value);
+  }
+  
+  
     // public lista:any = [];
   // cargarData(){
   //   this.authService.datos()

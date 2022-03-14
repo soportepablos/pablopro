@@ -56,28 +56,12 @@ ul.timeline > li:before {
   float: right;
 }
 
-.preview {
-  background-color: #EBEBEB;
-}
-
 /* MODAL */
-/* .experi-modal{
-  width: 400px;
+.preview {
+  background-color: #f8f4dd;
+}
+.preview-eliminar {
+  background-color: #fdccaf;
+}
 
-}
-.experi-modal .btn-close {
-  color: #1abc9c;
-  font-size: 2rem;
-  padding: 1rem;
-}
-.experi-modal .experi-modal-title {
-  font-size: 2.25rem;
-  line-height: 2rem;
-}
-@media (min-width: 300px) {
-  .experi-modal .experi-modal-title {
-    font-size: 3rem;
-    line-height: 2.5rem;
-  }
-} */
 

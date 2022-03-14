@@ -56,14 +56,11 @@ export class AuthService {
     return this.http.post(this.urlDatos,{dt_theme:theme});
   }    
   
+  // Trae el registro para modificar segun ID seleccionado
   datoTipo(id:any):Observable<any>
   {
-    //console.log('DATOOOOSSS: ',theme);
-    // console.log("ESTO : ", this.http.post(this.urlDatos1,theme));
-    return this.http.post(this.urlDato,{dt_id:id});
+     return this.http.post(this.urlDato,{dt_id:id});
   } 
   
-
-
 }
   /// este servicio lo consumismo desde nuestro login por lo que instanciamos ahi.
