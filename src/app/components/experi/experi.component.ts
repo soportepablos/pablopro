@@ -26,12 +26,13 @@ export class ExperiComponent implements OnInit {
               private ruta:Router,
               private formBuilder:FormBuilder
   ) { }
-
-  public edited = false;
+ 
+  //public edited = false;
+  public edited = true; //lo coloque true hasta rehacer con spring boot
 
   ngOnInit(): void {
     this.cargarData(); // trae lista para mostrar
-    this.isLog(); // virifica si esta logeado
+    //this.isLog(); // virifica si esta logeado
   }
 
   // Verificar si esta logeado para saber si habilita la edicion o no
@@ -70,27 +71,44 @@ export class ExperiComponent implements OnInit {
       });
   }
  
-  ///ACTUALIZAR FORMULARIO
-  actualizar(): any {
-    console.log(this.formDatos.value);
+  ///MODIFICAR FORMULARIO
+  actualizar() {
+    this.authService.regMod(this.formDatos.value)
+    .subscribe((result)=>{ /// si no me suscribo nunca llega a la API
+      this.cargarData(); // trae lista para mostrar
+    });
+    //console.log(this.formDatos.value);
   }
-
-  //ELIMINAR FORMULARIO
-  eliminar(): any {
-    console.log(this.formDatos.value);
-  }
-
+  
+  // CREAR UN NUEVO  REGISTRO 
   // BLANQUEAR FORMULARIO ANTES DE CREAR EL NUEVO
   blanqueo(): any {
     this.formDatos.reset();
-    console.log(this.formDatos.value);
-  }
-  nuevoExperi(): any {
-    console.log(this.formDatos.value);
+    //console.log(this.formDatos.value);
   }
   
+  // INSERTA NUEVO REGISTRO
+  nuevoExperi() {
+    // console.log(this.formDatos.value);
+    this.formDatos.value.dt_theme = "experi";
+    this.authService.regNew(this.formDatos.value)
+    .subscribe((result)=>{ 
+      this.cargarData(); // trae lista para mostrar
+    });
+  }
   
-    // public lista:any = [];
+  //ELIMINAR FORMULARIO
+  eliminarExperi() {
+    this.authService.regDel(this.formDatos.value.dt_id)
+    .subscribe((result)=>{ 
+      console.log(result); 
+      this.cargarData(); // trae lista para mostrar
+    });
+    //console.log(this.formDatos.value.dt_id);
+  }
+
+ 
+  // public lista:any = [];
   // cargarData(){
   //   this.authService.datos()
   //     .subscribe(dt => {

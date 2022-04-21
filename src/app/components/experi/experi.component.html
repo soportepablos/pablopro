@@ -2,36 +2,37 @@
 <section class="page-section mb-0">
     <div class="container ">
         <div class="row justify-content-center">
-            <div class="col-lg-10 ">
+            <div class="col-lg-9 ">
                 <!-- Boton NUEVO-->
-                <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#nuevo" (click)="blanqueo()">
-                    <a class="btn btn-trash btn-outline-light" href="#!">
+                <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#nuevoExperi" (click)="blanqueo()">
+                    <a class="btn btn-edit btn-outline-light" href="#!" >
                         <i class="fa fa-pen-nib"></i>
                     </a>
                 </div>
                 
-            <!-- About Section Heading-->
-                <h2 class="font-weight-bold ">Experiencia</h2>
+                 <!-- About Section Heading-->
+                <h2 class="p-3 bg-secondary text-center text-white">Experiencia</h2>
                 
                 <ul *ngFor="let data of lista" class="timeline">
                     <li>
                         <!-- Boton ELIMINAR -->
-                        <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#elimina" data-whatever="{data.dt_id}">
-                            <a class="btn btn-trash btn-outline-light" href="#!" (click)="tomaDatos(data.dt_id)">
+                        <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#eliminaExperi" data-whatever="{data.dt_id}">
+                            <a class="btn btn-trash btn-outline-light" href="#!" (click)="tomaDatos(data.dt_id)" >
                                 <i class="fa fa-trash "></i>
                             </a>
                         </div>
                         <!-- Boton MODIFICAR -->
-                        <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#actualiza" data-whatever="{data.dt_id}">
-                            <a class="btn btn-edit btn-outline-light " href="#!" (click)="tomaDatos(data.dt_id)">
+                        <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#modiExperi" data-whatever="{data.dt_id}">
+                            <a class="btn btn-edit btn-outline-light " href="#!" (click)="tomaDatos(data.dt_id)" >
                                 <i class="fa fa-pen"></i>
                             </a>
                         </div>
-                        <p class="d-inline p-1 bg-primary text-white">{{data.dt_year}} - {{data.dt_title}}</p>
+
+                        <h5 class="p-1 bg-secondary text-white " >{{data.dt_year}} - {{data.dt_title}}</h5>
                         <p>{{data.dt_text}}</p>
                 
-                        <!-- Modal ACTUALIZAR-->
-                        <div class="modal fade" id="actualiza" tabindex="-1" aria-labelledby="1" aria-hidden="true">
+                        <!-- Modal MODIFICAR-->
+                        <div class="modal fade" id="modiExperi" tabindex="-1" aria-labelledby="1" aria-hidden="true">
                             <div class="modal-dialog modal-xl" >
                                 <div class="modal-content">
                                     <div class="modal-header"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
@@ -42,7 +43,7 @@
                                         <ul class="timeline">
                                             <li>
                                                 <div>
-                                                    <p class="d-inline p-1 bg-primary text-white">{{formDatos.value.dt_year}} - {{formDatos.value.dt_title}}</p>
+                                                    <p class="p-1 bg-secondary text-white">{{formDatos.value.dt_year}} - {{formDatos.value.dt_title}}</p>
                                                     <p>{{formDatos.value.dt_text}}</p>
                                                     <br>
                                                 </div>
@@ -52,7 +53,7 @@
                                         
                                     <hr>    
                                     <h5>Formulario.</h5>
-                                    <form [formGroup]="formDatos" >
+                                    <form [formGroup]="formDatos"  >
                                         <!-- <h2 class="experi-modal-title text-secondary text-uppercase mb-0">Formulario</h2> -->
                                     <div class="row">
                                         <div class="form-group col-2">
@@ -83,22 +84,22 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- FIN MODAL ACTUALIZAR -->
+                        <!-- FIN MODAL MODIFICAR -->
                         
                         <!-- Modal ELIMINAR-->
-                        <div class="modal fade" id="elimina" tabindex="-1" aria-labelledby="1" aria-hidden="true">
+                        <div class="modal fade" id="eliminaExperi" tabindex="-1" aria-labelledby="1" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                               <div class="modal-content">
                                 <div class="modal-header"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
                                 <div class="modal-body">
                                     <h5>ESTA SEGURO DE ELIMINAR ?</h5>
-                                    <form [formGroup]="formDatos" (submit)="eliminar()">
+                                    <form [formGroup]="formDatos" (submit)="eliminarExperi()">
                                         <div class="preview-eliminar">
                                             <p><em>Vista previa....</em></p>
                                             <ul class="timeline">
                                                 <li>
                                                     <div>
-                                                        <p class="d-inline p-1 bg-primary text-white">{{formDatos.value.dt_year}} - {{formDatos.value.dt_title}}</p>
+                                                        <p class="p-1 bg-secondary text-white">{{formDatos.value.dt_year}} - {{formDatos.value.dt_title}}</p>
                                                         <p>{{formDatos.value.dt_text}}</p>
                                                         <br>
                                                     </div>
@@ -117,13 +118,13 @@
                         <!-- FIN ELIMINAR -->
 
                         <!-- Modal NUEVO EXPERI-->
-                        <div class="modal fade" id="nuevo" tabindex="-1" aria-labelledby="1" aria-hidden="true" >
+                        <div class="modal fade" id="nuevoExperi" tabindex="-1" aria-labelledby="1" aria-hidden="true" >
                             <div class="modal-dialog modal-xl" >
                                 <div class="modal-content">
                                     <div class="modal-header"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
                                     <div class="modal-body ">
                                     <h5>Formulario.</h5>
-                                    <form [formGroup]="formDatos" >
+                                    <form [formGroup]="formDatos" (submit)="nuevoExperi()">
                                     <div class="row">
                                         <div class="form-group col-2">
                                             <label for="dt_year" class="col-form-label"><h6>Año:</h6></label>
@@ -145,7 +146,7 @@
                                         
                                         <div class="modal-footer">
                                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
-                                        <button type="submit" class="btn btn-success" data-bs-dismiss="modal" (click)="nuevoExperi()">Crear</button>
+                                        <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Crear</button>
                                         </div>
                                     </form>
                                 </div>
@@ -153,13 +154,16 @@
                             </div>
                         </div>
                         <!-- FIN MODAL NUEVO -->
-
-
                     </li>
                 </ul>
+            </div>
+            <div class="bg-primary col-lg-2  portada">
+                
             </div>
         </div>
     </div>
 </section>
 
 <router-outlet></router-outlet>
+
+

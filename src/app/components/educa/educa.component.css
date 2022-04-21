@@ -1,64 +1,78 @@
-.list-group {
-    display: flex;
-    flex-direction: column;
-    /* padding-left: 0; */
-    /* margin-bottom: 0; */
-    /* border-radius: 0.5rem; */
-  }
-  .list-group-item {
-    position: relative;
-    display: block;
-    padding: 0.5rem 1rem;
-    color: #212529;
-    text-decoration: none;
-    background-color: #fff;
-    /* border: 0.125rem solid rgba(0, 0, 0, 0.125); */
-  }
-  .list-group-item.active {
-    z-index: 2;
-    color: #fff;
-    background-color: #1abc9c;
-    /* border-color: #1abc9c; */
-  }
-  
-  /* Boton Edicion */
+/* TimeLine */
+ul.timeline {
+  list-style-type: none;
+  position: relative;
+}
+ul.timeline:before {
+  content: ' ';
+  background: #448de7;
+  display: inline-block;
+  position: absolute;
+  left: 29px;
+  width: 2px;
+  height: 120%;
+  z-index: 400;
+}
+ul.timeline > li {
+  /* margin: 20px 0; */
+  padding-left: 20px;
+}
+ul.timeline > li:before {
+  content: ' ';
+  background: white;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #0d6277;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 400;
+}
+/* end TimeLine */
+
+/* Boton Edicion */
 .btn-edit {
-  background-color: rgb(20, 184, 184);
-  border-radius: 100%;
+  background-color: rgb(57, 151, 70);
+  border-color: rgb(0, 0, 0);
   display: inline-flex;
-  width: 2.25rem;
-  height: 2.25rem;
-  font-size: 1.25rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
   justify-content: center;
   align-items: center;
   float: right;
 }
 /* Boton Eliminar */
 .btn-trash {
-  background-color: rgb(241, 165, 114);
-  border-radius: 100%;
-  display: inline-flex;
-  width: 2.25rem;
-  height: 2.25rem;
-  font-size: 1.25rem;
+  background-color: rgb(218, 82, 82);
+  border-color: rgb(0, 0, 0);
+   display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
   justify-content: center;
   align-items: center;
   float: right;
 }
 
-/* .butflote {
-  float: right;
-  width: 40px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  height:40px;
-  overflow:auto;
+/* MODAL */
+.preview {
+  background-color: #f8f4dd;
 }
-.butflott {
-  float: right;
-  width: 40px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  height:40px;
-  overflow:auto;
-} */
+.preview-eliminar {
+  background-color: #fdccaf;
+}
+
+
+/* FONDO DIV */
+.portada{
+  background: url(../../../assets/img/img1.jpg) no-repeat center ; /* no-repeat fixed center */
+  background-size: cover;
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  text-align: center; */
+  /* opacity: 0.6;   */
+}

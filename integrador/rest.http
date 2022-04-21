@@ -1,0 +1,30 @@
+POST http://localhost:8080/update HTTP/1.1
+content-type: application/json
+{
+    dt_title:"",
+    dt_theme:"",
+    dt_text:"",
+    dt_status:"",
+    dt_year:""
+}
+
+####
+
+
+GET http://localhost:8080/listar HTTP/1.1
+content-type: application/json
+
+
+####
+
+
+
+POST http://localhost:8080/insertar HTTP/1.1
+content-type: application/json
+ {
+    "dt_theme": "experi",
+    "dt_title": "aaaaaaaaa aaaaa  aaa",
+    "dt_text": "ooooo ooooo oooooo oood  ",
+    "dt_status": "0",
+    "dt_year": "0000000"
+  }

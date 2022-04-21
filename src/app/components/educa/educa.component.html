@@ -1,79 +1,170 @@
 <!-- educa-->
 <section class="page-section mb-0">
     <div class="container ">
-        <!-- About Section Content-->
         <div class="row justify-content-center">
-            <div class="col-lg-10 ">
-                <!-- About Section Heading-->
-                <h2>Educacion</h2>
-
-                    <span *ngFor="let data of lista" class="list-group">
-                    <a href="#" class="list-group-item ">
-                        <a *ngIf="edited" class=" btn btn-edit btn-outline-light " href="#EDIT"><i class="fa fa-pen"></i></a>
-                         <a *ngIf="edited" class=" btn btn-trash btn-outline-light" href="#TRASH"><i class="fa fa-trash "></i></a>
-                        <div class="d-flex justify-content-between">
-                            <h5 class="mb-1 d-inline p-1 bg-primary text-white ">{{data.dt_title}}</h5>
-                            <!-- <small>2022</small> -->
-                        </div>
-                            <p class="mb-1">{{data.dt_text}}
-                            </p>
-                            <small>{{data.dt_year}}</small>
-                    </a>     
-                    </span>
-    <!--        
-                     <a href="#" class="list-group-item  active">
-                        <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Full Stack Developer Jr.</h5>
-                        <small>2022</small>
-                        </div>
-                        <p class="mb-1">Buscando mejorar y actualizar conocimientos gracias al programa Argentina Programa y los modulos #SeProgramar y #YoProgramo,
-                            es otro gran broche a una carrera que tanto me apaciona.
-                        </p>
-                        <small>2021 - 2022</small>
-                    </a>
-                    <a href="#" class="list-group-item ">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Curso PHP - MySQL</h5>
-                            <small class="text-muted">2008</small>
-                        </div>
-                        <p class="mb-1">Ya con conocimiento en FrontEnd, presto interes sobre BackEnd y recorro cursos de PHP y MySQL hasta el dia de la fecha.</p>
-                        <small class="text-muted">2000 - 2004</small>
-                    </a>
-                    
-                    <a href="#" class="list-group-item ">
-                        <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">HTML - CSS3 </h5>
-                        <small class="text-muted">2000</small>
-                        </div>
-                        <p class="mb-1">Iniciando en el hipertexto comienzo con cursos para el diseño web</p>
-                        <small class="text-muted">1998 - 2000</small>
-                    </a>
-                    <a href="#" class="list-group-item  active">
-                        <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Analsita de Sistemas</h5>
-                        <small>2010</small>
-                        </div>
-                        <p class="mb-1">Obtener el Titulo de Analista de Sistema le puso un broche a una carrera ya comenzada hacia tiempo.</p>
-                        <small>2007 - 2010</small>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">WS-011T00-A: WINDOWS SERVER 2019 ADMINISTRATION</h5>
-                            <small class="text-muted">2022</small>
-                        </div>
-                        <p class="mb-1">Dentro de nuevos desafios y oportunidades surge la posibilidad de realizar el curso.</p>
-                        <small class="text-muted">2021 - 2022</small>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">CCNA - Cisco Networking Academy</h5>
-                        <small class="text-muted">2005</small>
-                        </div>
-                        <p class="mb-1">Como parte de mi trabajo incremento mi conocimiento en redes</p>
-                        <small class="text-muted">2003 - 2005</small>
-                    </a> -->
-
+            <div class="bg-primary col-lg-2  portada">
+                
             </div>
+            <div class="col-lg-9 ">
+                <!-- Boton NUEVO-->
+                <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#nuevoEduca" (click)="blanqueo()">
+                    <a class="btn btn-edit btn-outline-light" href="#!" >
+                        <i class="fa fa-pen-nib"></i>
+                    </a>
+                </div>
+                
+                 <!-- About Section Heading-->
+                <h2 class="p-3 bg-secondary text-center text-white">Educacion</h2>
+                
+                <ul *ngFor="let data of lista" class="timeline">
+                    <li >
+                        <!-- Boton ELIMINAR -->
+                        <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#eliminaEduca" data-whatever="{data.dt_id}">
+                            <a class="btn btn-trash btn-outline-light" href="#!" (click)="tomaDatos(data.dt_id)" >
+                                <i class="fa fa-trash "></i>
+                            </a>
+                        </div>
+                        <!-- Boton MODIFICAR -->
+                        <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#modiEduca" data-whatever="{data.dt_id}">
+                            <a class="btn btn-edit btn-outline-light " href="#!" (click)="tomaDatos(data.dt_id)" >
+                                <i class="fa fa-pen"></i>
+                            </a>
+                        </div>
+
+                        <h5 class="p-1 bg-secondary text-white " >{{data.dt_year}} - {{data.dt_title}}</h5>
+                        <p>{{data.dt_text}}</p>
+                
+
+                    </li>
+
+                </ul>
+                                                            <!-- Modal MODIFICAR-->
+                                                            <div class="modal fade" id="modiEduca" tabindex="-1" aria-labelledby="1" aria-hidden="true">
+                                                                <div class="modal-dialog modal-xl" >
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                                                                        <div class="modal-body ">
+                                                                            
+                                                                        <div class="preview">
+                                                                            <p><em>Vista previa....</em></p>
+                                                                            <ul class="timeline">
+                                                                                <li>
+                                                                                    <div>
+                                                                                        <p class="p-1 bg-secondary text-white">{{formDatos.value.dt_year}} - {{formDatos.value.dt_title}}</p>
+                                                                                        <p>{{formDatos.value.dt_text}}</p>
+                                                                                        <br>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                            
+                                                                        <hr>    
+                                                                        <h5>Formulario.</h5>
+                                                                        <form [formGroup]="formDatos"  >
+                                                                            <!-- <h2 class="experi-modal-title text-secondary text-uppercase mb-0">Formulario</h2> -->
+                                                                        <div class="row">
+                                                                            <div class="form-group col-2">
+                                                                                <label for="dt_year" class="col-form-label"><h6>Año:</h6></label>
+                                                                                <input type="text" class="form-control" id="dt_year" formControlName="dt_year">
+                                                                            </div>
+                                                                            <div class="form-group col-10"> <!-- [value]="valTitulo" -->
+                                                                                <label for="dt_title" class="col-form-label"><h6>Titulo:</h6></label>
+                                                                                <input type="text" class="form-control" id="dt_title" formControlName="dt_title">
+                                                                            </div>
+                                                                        </div>
+                                                                            <div class="form-group">
+                                                                                <label for="dt_text" class="col-form-label"><h6>Informacion:</h6></label>
+                                                                                <textarea rows="4" class="form-control" id="dt_text" formControlName="dt_text"></textarea>
+                                                                            </div>
+                                                                            <div class="form-group form-check">
+                                                                                <input type="checkbox" class="form-check-input" id="estado" >
+                                                                                <label for="estado" >Estado -<i> Resalta la informacion </i></label>
+                                                                            </div>
+                                                                            
+                                                                            <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                                                                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="actualizar()">Actualizar</button>
+                                                                            </div>
+                                                                        </form>
+                                    
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- FIN MODAL MODIFICAR -->
+                                                            
+                                                            <!-- Modal ELIMINAR-->
+                                                            <div class="modal fade" id="eliminaEduca" tabindex="-1" aria-labelledby="1" aria-hidden="true">
+                                                                <div class="modal-dialog modal-lg">
+                                                                  <div class="modal-content">
+                                                                    <div class="modal-header"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                                                                    <div class="modal-body">
+                                                                        <h5>ESTA SEGURO DE ELIMINAR ?</h5>
+                                                                        <form [formGroup]="formDatos" (submit)="eliminarEduca()">
+                                                                            <div class="preview-eliminar">
+                                                                                <p><em>Vista previa....</em></p>
+                                                                                <ul class="timeline">
+                                                                                    <li>
+                                                                                        <div>
+                                                                                            <p class="p-1 bg-secondary text-white">{{formDatos.value.dt_year}} - {{formDatos.value.dt_title}}</p>
+                                                                                            <p>{{formDatos.value.dt_text}}</p>
+                                                                                            <br>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                                                                            <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            <!-- FIN ELIMINAR -->
+                                    
+                                                            <!-- Modal NUEVO EDUCA-->
+                                                            <div class="modal fade" id="nuevoEduca" tabindex="-1" aria-labelledby="1" aria-hidden="true" >
+                                                                <div class="modal-dialog modal-xl" >
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                                                                        <div class="modal-body ">
+                                                                        <h5>Formulario.</h5>
+                                                                        <form [formGroup]="formDatos" (submit)="nuevoEduca()">
+                                                                        <div class="row">
+                                                                            <div class="form-group col-2">
+                                                                                <label for="dt_year" class="col-form-label"><h6>Año:</h6></label>
+                                                                                <input type="text" class="form-control" id="dt_year" formControlName="dt_year">
+                                                                            </div>
+                                                                            <div class="form-group col-10"> 
+                                                                                <label for="dt_title" class="col-form-label"><h6>Titulo:</h6></label>
+                                                                                <input type="text" class="form-control" id="dt_title" formControlName="dt_title" >
+                                                                            </div>
+                                                                        </div>
+                                                                            <div class="form-group">
+                                                                                <label for="dt_text" class="col-form-label"><h6>Informacion:</h6></label>
+                                                                                <textarea rows="4" class="form-control" id="dt_text" formControlName="dt_text"></textarea>
+                                                                            </div>
+                                                                            <div class="form-group form-check">
+                                                                                <input type="checkbox" class="form-check-input" id="estado" >
+                                                                                <label for="estado" >Estado -<i> Resalta la informacion </i></label>
+                                                                            </div>
+                                                                            
+                                                                            <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                                                                            <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Crear</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- FIN MODAL NUEVO -->
+            </div>
+
         </div>
     </div>
 </section>
+
+<router-outlet></router-outlet>
