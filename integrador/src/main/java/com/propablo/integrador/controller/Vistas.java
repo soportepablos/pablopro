@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,72 +27,58 @@ public class Vistas {
     public List<Datos> getDatos() {
         return repositorio.findAll();
     }
-
-    // Insertar nuevo registro
-    // @PostMapping
-    // public Object agregarDatos(@RequestBody Datos res){
-    //     return repositorio.save(res);
-    // }
-
-    //Eliminar registro
-    // @DeleteMapping(value = "/{id}")
-    // public void eliminarDatos(@PathVariable int id) {
-    //     repositorio.deleteById(id);
-    // }
-    
-    //Retorna un registro
-    // @GetMapping("/{theme}")
-    // public Object getDatos(@PathVariable String theme) {
-    //     return repositorio.findByDttheme(theme);
-    //     //return id;
-    // }
-    
-    //Retorna un registro
-    @GetMapping(value = "/tema")
-    public Object getDatos(@RequestBody String tem) {
-        
+   
+    //Para listar los registros EXPERI o EDUCA -- OK
+    @PostMapping(value = "/tema")
+    public Object postDatos(@RequestBody String tem) {
         return repositorio.findByDttheme(tem);
         // return (tem);
     }
-
-    //Actualizar Registro
-    // @PutMapping
-    // public void actualizarDatos(@RequestBody Datos res) {
-    //     repositorio.saveAndFlush(res);
-    // }
-
-
-    // @GetMapping("/")
-    // public String index(){
-    //     return "Hola mundo";
-    // }
-    
-    @GetMapping("/prueba/{id}")
-    public String mostrar(@PathVariable int id){
-        return "Envio y toma variable get " + id;
+    // devuelve un ID en particular sirve para mostrar el preview a modificar o eliminar -- OK
+    @GetMapping(value = "/{ID}")
+    public Object getDatos(@PathVariable int ID) {
+        return repositorio.findById(ID);
     }
-    
+
+    //Actualizar Registro --- OK
+    @PutMapping(value = "/update")
+    public void updateDatos(@RequestBody Datos res) {
+        repositorio.saveAndFlush(res);
+    }
+
+    // nuevo registro -- OK
+    @PostMapping(value = "/new")
+    public Object newDatos(@RequestBody Datos res) {
+        return repositorio.save(res);
+    }
+
+    // Eliminar registro -- OK
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable int id){
+        repositorio.deleteById(id);
+    }
+  
     //CRUD SIMPLE
-    @GetMapping("/find/{id}")
-    public String find(@PathVariable int id){
-        return "Busqueda " + id;
-    }
+    // @GetMapping("/find/{id}")
+    // public String find(@PathVariable int id){
+    //     return "Busqueda " + id;
+    // }
 
-    @PostMapping("/update")
-    public Datos update(@RequestBody Datos pp) {
-        return pp;
+    // @PostMapping("/update")
+    // public Datos update(@RequestBody Datos pp) {
+    //     return pp;
 
-    }
+    // }
 
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable int id){
-        return "Eliminacion " + id;
-    }
+    // @GetMapping("/delete/{id}")
+    // public String delete(@PathVariable int id){
+    //     return "Eliminacion " + id;
+    // }
 
-    @PostMapping("/save/{id}")
-    public String save(){
-        return "Guardar nuevo ";
-    }
+    // @PostMapping("/save/{id}")
+    // public String save(){
+    //     return "Guardar nuevo ";
+    // }
     /// FIN CRUD SIMPLE
     
 }
