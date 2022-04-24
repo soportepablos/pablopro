@@ -15,10 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @EnableJpaRepositories
 @Repository
-public interface IDatos extends JpaRepository<Datos, String> {
+public interface IDatos extends JpaRepository<Datos, Integer> {
 
     // que sea solo lectura la utilizacion de la consulta
-    // @Transactional(readOnly = true) 
+    @Transactional(readOnly = true) 
     List<Datos> findByDttheme(String tema);
 
 

@@ -14,12 +14,12 @@ export class ExperiComponent implements OnInit {
 
   // creo el formDatos para poder modificar..................
   public formDatos = new FormGroup({
-    dt_title: new FormControl('',Validators.required),
-    dt_text: new FormControl('',Validators.required),
-    dt_year: new FormControl('',Validators.required),
-    dt_status: new FormControl(''),
-    dt_id: new FormControl(''),
-    dt_theme: new FormControl('')
+    dttitle: new FormControl('',Validators.required),
+    dttext: new FormControl('',Validators.required),
+    dtyear: new FormControl('',Validators.required),
+    dtstatus: new FormControl(''),
+    id: new FormControl(''),
+    dttheme: new FormControl('')
   });
   
   constructor(private authService:AuthService, 
@@ -47,27 +47,26 @@ export class ExperiComponent implements OnInit {
     });
   }
 
-  /// carga datos para mostrar sobre experiencia (experi)
+  /// CARGA EL LISTADO EXPERI OK
   public lista:any = [];
   cargarData(){
     this.authService.datos("experi")
       .subscribe((result)=>{
         this.lista = result;
     });
-    //console.log(this.lista1);
   }
 
-  /// Toma los datos de la base segun el registro seleccionado 
-  /// y lo muestra en el modal para modificar
+  // TOMA LOS DATOS SEGUN ID SELECCIONADO Y REALIZA EL PREVIEW OK
   public dato:any = [];
   tomaDatos(id:any){
+    // console.log(id);
     this.authService.datoTipo(id)
       .subscribe((dati)=>{
         this.dato = dati;
-        if (this.dato[0].dt_status === 0){
-          this.dato[0].status = true;
-        }else{ this.dato[0].status = false; }
-        this.formDatos.patchValue(this.dato[0]);
+        // if (this.dato[0].dtstatus === 0){
+        //   this.dato[0].status = true;
+        // }else{ this.dato[0].status = false; }
+        this.formDatos.patchValue(this.dato);
       });
   }
  
@@ -90,7 +89,8 @@ export class ExperiComponent implements OnInit {
   // INSERTA NUEVO REGISTRO
   nuevoExperi() {
     // console.log(this.formDatos.value);
-    this.formDatos.value.dt_theme = "experi";
+    this.formDatos.value.dttheme = "experi";
+    this.formDatos.value.dtstatus = 0; // SOLUCIONAR EL TEMA DE STATUS BOOLEANO
     this.authService.regNew(this.formDatos.value)
     .subscribe((result)=>{ 
       this.cargarData(); // trae lista para mostrar
@@ -99,12 +99,12 @@ export class ExperiComponent implements OnInit {
   
   //ELIMINAR FORMULARIO
   eliminarExperi() {
-    this.authService.regDel(this.formDatos.value.dt_id)
+    this.authService.regDel(this.formDatos.value.id)
     .subscribe((result)=>{ 
-      console.log(result); 
+      // console.log(result); 
       this.cargarData(); // trae lista para mostrar
     });
-    //console.log(this.formDatos.value.dt_id);
+    //console.log(this.formDatos.value.dtid);
   }
 
  

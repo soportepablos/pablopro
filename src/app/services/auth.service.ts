@@ -12,12 +12,12 @@ export class AuthService {
   //para hacer uso de esto tenemos que utilizar el cliente HTTP - consultas http
 
   private URL = 'http://localhost:3000/singin'; // envio el form con usuario y pass
-  private urlDatos = 'http://localhost:3000/datos'; //le envio theme (experi o educa)
+  private urlDatos = 'http://localhost:8080/datos/tema'; //le envio theme (experi o educa)
   private urlTest =  'http://localhost:3000/test'; // envio token y me devuelve usuario y rol
-  private urlDato = 'http://localhost:3000/registro'; // trae el registro con los datos segun ID enviado
-  private urlNew = 'http://localhost:3000/regnew'; // trae el registro con los datos segun ID enviado
-  private urlMod = 'http://localhost:3000/regmod'; // trae el registro con los datos segun ID enviado
-  private urlDel = 'http://localhost:3000/regdel'; // trae el registro con los datos segun ID enviado
+  private urlDato = 'http://localhost:8080/datos/'; // trae el registro con los datos segun ID enviado
+  private urlNew = 'http://localhost:8080/datos/new'; // trae el registro con los datos segun ID enviado
+  private urlMod = 'http://localhost:8080/datos/update'; // trae el registro con los datos segun ID enviado
+  private urlDel = 'http://localhost:8080/datos/delete/'; // elimina registro
 
 
   constructor(private http: HttpClient) { 
@@ -46,45 +46,55 @@ export class AuthService {
     var pp =  this.http.post(this.urlTest,{ tok });
     return(pp);
     
-
     // return this.http.post(this.urlTest,{ tok });
 
   }
-    
-  // trae educa o experi
-  datos(theme:any):Observable<any>
-  {
-    //console.log('DATOOOOSSS: ',theme);
-    // console.log("ESTO : ", this.http.post(this.urlDatos1,theme));
-    return this.http.post(this.urlDatos,{dt_theme:theme});
-  }    
-  
+   
+  //////////////////////////
+  // trae los registro de experi o educa
+  public datos(theme: any): Observable<any[]> {
+    return this.http.post<any[]>(this.urlDatos,theme);
+  }
+
   // Trae el registro para modificar segun ID seleccionado
-  datoTipo(id:any):Observable<any>
-  {
-    //console.log({dt_id:id});
-     return this.http.post(this.urlDato,{dt_id:id});
+  public datoTipo(id:any):Observable<any> {
+      return this.http.get(this.urlDato + id);  
   } 
+
+  // ACTUALIZAR REGISTRO
+  regMod(regi:string):Observable<any>  {
+    return this.http.put(this.urlMod,regi);
+  } 
+
   // ELIMINA REGISTRO
-  regDel(ids:any):Observable<any>
-  {
-    //console.log(ids);
-    return this.http.post(this.urlDel,{dt_id:ids});
+  regDel(id:any) {
+    return this.http.delete(this.urlDel + id);
   }  
 
-  // MODIFICAR REGISTRO
-  regMod(regi:string):Observable<any>
-  {
-    return this.http.post(this.urlMod,regi);
-  } 
-  
   // NUEVO REGISTRO
-  regNew(regi:string):Observable<any>
-  {
-  console.log(regi);
-    // return this.http.post(this.urlMod,regi);
+  regNew(regi:string):Observable<any>  {
     return this.http.post(this.urlNew,regi);
   } 
+
+
+  ////////////////////////////////
+
+
+  // Trae el registro para modificar segun ID seleccionado
+  // datoTipo(id:any):Observable<any>
+  // {
+  //   console.log(this.http.post<any[]>(this.urlDato,id));
+  //   return this.http.post<any[]>(this.urlDato,id);
+  //   //  return this.http.post(this.urlDato,{dtid:id});
+     
+  // } 
+
+
+
+  // MODIFICAR REGISTRO
+
+  
+
 
 
 }
