@@ -3,6 +3,12 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "Launch IntegradorApplication",
+      "request": "launch",
+      "mainClass": "com.propablo.integrador.IntegradorApplication"
+    },
+    {
       "name": "ng serve",
       "type": "pwa-chrome",
       "request": "launch",

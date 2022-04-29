@@ -4,16 +4,16 @@
     <div class="row justify-content-center">
         <div class="col-lg-4">
             <label  class="form-label">UserName</label>
-            <input class="form-control" type="text" formControlName="user_name" 
-                [ngClass]="{'is-invalid':user_name?.errors && user_name?.touched,
-                'is-valid':!user_name?.errors && user_name?.touched}"
+            <input class="form-control" type="text" formControlName="username" 
+                [ngClass]="{'is-invalid':username?.errors && username?.touched,
+                'is-valid':!username?.errors && username?.touched}"
             >
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-lg-4">
             <label for="exampleFormControlTextarea1" class="form-label">Password</label>
-            <input class="form-control" type="password" formControlName="user_pass">
+            <input class="form-control" type="password" formControlName="password">
         </div>
     <div class="row text-center justify-content-center">
         <div class="col-lg-4 p-3">
@@ -21,9 +21,9 @@
             <!-- (click)="logIn()" -->
         </div>
     </div>
-    <div class="row text-center justify-content-center" *ngIf="user_name?.errors && user_name?.touched">
-        <p *ngIf="user_name?.hasError('required')" class="text-danger"> Informacion Requerida</p>
-        <p *ngIf="user_name?.hasError('minlength')" class="text-danger"> Longitud Requerida</p>
+    <div class="row text-center justify-content-center" *ngIf="username?.errors && username?.touched">
+        <p *ngIf="username?.hasError('required')" class="text-danger"> Informacion Requerida</p>
+        <p *ngIf="username?.hasError('minlength')" class="text-danger"> Longitud Requerida</p>
     </div>
 </div>
 </form>

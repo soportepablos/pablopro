@@ -11,9 +11,9 @@ import { map } from 'rxjs/operators';
 export class AuthService {
   //para hacer uso de esto tenemos que utilizar el cliente HTTP - consultas http
 
-  private URL = 'http://localhost:3000/singin'; // envio el form con usuario y pass
+  private URL = 'http://localhost:8080/login'; // envio el form con usuario y pass
   private urlDatos = 'http://localhost:8080/datos/tema'; //le envio theme (experi o educa)
-  private urlTest =  'http://localhost:3000/test'; // envio token y me devuelve usuario y rol
+  private urlTest =  'http://localhost:8080/test'; // envio token y me devuelve usuario y rol
   private urlDato = 'http://localhost:8080/datos/'; // trae el registro con los datos segun ID enviado
   private urlNew = 'http://localhost:8080/datos/new'; // trae el registro con los datos segun ID enviado
   private urlMod = 'http://localhost:8080/datos/update'; // trae el registro con los datos segun ID enviado
@@ -35,6 +35,7 @@ export class AuthService {
     // map mapea, modifica la repuesta y despues pasa a los componentes. 
     // data => modificamos si queremos y luego retornamos
     return this.http.post(this.URL,user).pipe(map(data=>{
+      // console.log(this.URL,user);
       return data;
     })) 
   }
@@ -44,7 +45,7 @@ export class AuthService {
   {
     var tok = localStorage.getItem("currenteUser");
     var pp =  this.http.post(this.urlTest,{ tok });
-    return(pp);
+    return(pp); 
     
     // return this.http.post(this.urlTest,{ tok });
 

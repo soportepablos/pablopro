@@ -66,7 +66,7 @@ export class ExperiComponent implements OnInit {
         // if (this.dato[0].dtstatus === 0){
         //   this.dato[0].status = true;
         // }else{ this.dato[0].status = false; }
-        this.formDatos.patchValue(this.dato);
+        this.formDatos.patchValue(this.dato); 
       });
   }
  

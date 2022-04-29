@@ -31,7 +31,7 @@ public class Datos implements Serializable {
     private String dtstatus;
 
     @Column(name = "dtyear", nullable = false)
-    private String dtyear;
+    private String dtyear; 
 
 
     //Constructor
