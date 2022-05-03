@@ -49,7 +49,7 @@ export class EducaComponent implements OnInit {
     }
   }
 
-  /// CARGA EL LISTADO EXPERI OK
+  /// CARGA EL LISTADO EDUCA OK
   public lista:any = [];
   cargarData(){
     this.authService.datos("educa")
@@ -86,7 +86,7 @@ export class EducaComponent implements OnInit {
   // INSERTA NUEVO REGISTRO
   nuevoEduca() {
     // console.log(this.formDatos.value);
-    this.formDatos.value.dttheme = "experi";
+    this.formDatos.value.dttheme = "educa";
     this.formDatos.value.dtstatus = 0; // SOLUCIONAR EL TEMA DE STATUS BOOLEANO
     this.authService.regNew(this.formDatos.value)
     .subscribe((result)=>{ 
