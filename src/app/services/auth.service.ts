@@ -13,7 +13,7 @@ export class AuthService {
 
   private URL = 'http://localhost:8080/login'; // envio el form con usuario y pass
   private urlDatos = 'http://localhost:8080/datos/tema'; //le envio theme (experi o educa)
-  private urlTest =  'http://localhost:8080/test'; // envio token y me devuelve usuario y rol
+  private urlTest =  'http://localhost:8080/login/test'; // envio token y me devuelve usuario y rol
   private urlDato = 'http://localhost:8080/datos/'; // trae el registro con los datos segun ID enviado
   private urlNew = 'http://localhost:8080/datos/new'; // trae el registro con los datos segun ID enviado
   private urlMod = 'http://localhost:8080/datos/update'; // trae el registro con los datos segun ID enviado
@@ -29,26 +29,19 @@ export class AuthService {
   // observable para que los controladores puedan suscribir
   singIn(user:string):Observable<any>
   {
-    //return this.http.post(`${this.URL}/user/singin`,user); //nos devuelve un observable que es nuestra consulta.
-    // llamada a la API
-    // metodo pipe -- encadena operadores (realizo acciones previo a retornar la respuesta a los controladores (componente))
-    // map mapea, modifica la repuesta y despues pasa a los componentes. 
-    // data => modificamos si queremos y luego retornamos
-    return this.http.post(this.URL,user).pipe(map(data=>{
-      // console.log(this.URL,user);
+    // {responseType: 'text' as 'json'} SOLUCIONA EL ERROR JSON 200 OK 
+    return this.http.post(this.URL,user,{responseType: 'text' as 'json'})
+    .pipe(map(data=>{
       return data;
     })) 
   }
 
-  //Verificacion del logeo
+  //VERIFICACION DE LOGEO
   isAuth():Observable<any> 
   {
-    var tok = localStorage.getItem("currenteUser");
-    var pp =  this.http.post(this.urlTest,{ tok });
+    var tok = localStorage.getItem("token");
+    var pp =  this.http.post(this.urlTest,tok,{responseType: 'text' as 'json'});
     return(pp); 
-    
-    // return this.http.post(this.urlTest,{ tok });
-
   }
    
   //////////////////////////
@@ -93,9 +86,6 @@ export class AuthService {
 
 
   // MODIFICAR REGISTRO
-
-  
-
 
 
 }

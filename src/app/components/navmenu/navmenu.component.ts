@@ -20,14 +20,18 @@ export class NavmenuComponent implements OnInit {
 
   // Verificar si esta logeado para saber si habilita la edicion o no
   isLog(){
-    this.authService.isAuth()
-      .subscribe((result)=>{
-        if (result.user_role == "admin" || result.user_role == "guest") {
-            this.edited = true;
-          }else{
-            this.edited = false;
-        }
-    });
+    if (!localStorage.getItem("token")){
+      console.log("NavMenu verifica SIN LOGEO");
+    }else{
+      this.authService.isAuth()
+        .subscribe((result)=>{
+          if (result == "admin" || result == "guest") {
+              this.edited = true;
+            }else{
+              this.edited = false;
+          }
+      });
+    }
   }
 
 

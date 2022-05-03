@@ -34,37 +34,43 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.form.get('password');
   }
-  /////////
+
+  ///////// DESLOGEO 
   isLog(){
-    this.authService.isAuth()
-      .subscribe((result)=>{
-        if (result.user_role == "admin" || result.user_role == "guest") {
-          localStorage.clear();
-          // this.edited = false;
-          console.log("Se deslogeo " , result );
-          this.ruta.navigate(['/web']); //vuelve a la ruta web.
-        }
-    });
+    if (!localStorage.getItem("token")){
+      console.log("Login verifico SIN LOGEO");
+    }else{
+      this.authService.isAuth().subscribe((result)=>{
+        console.log("Se deslogeo " , result );
+          if (result == "admin" || result == "guest") {
+            localStorage.clear();
+            // this.edited = false;
+            console.log("Se deslogeo " , result );
+            this.ruta.navigate(['/web']); //vuelve a la ruta web.
+          }
+      });
+    };
   }
 
+  //// LLAMADO PARA LOGEO
   logIn(event:Event) {
     event.preventDefault;
-    console.log(this.form.value);
+    //console.log(this.form.value);
     this.authService.singIn(this.form.value).subscribe(data=>{
-      
-      const res = JSON.stringify(data);
+    
+    // const res = JSON.stringify(data);
+    // console.log(res);
+    // guardo en el localStorage
+    if (data !== "false"){
+      localStorage.setItem('token', data );
+      console.log("datos devueltos del logeo: ",data);
+      this.ruta.navigate(['/web']); //vuelve a la ruta web.
 
-    //   // guardo en el localStorage
-    //   // localStorage.setItem('currenteUser', data.token );
-    //   // if (data.token){
-    //   //   console.log("datos devueltos del logeo: ",data.token);
-    //   // }else{
-    //   //   console.log("ERROR AL LOGEARSE")
-    //   // }
-
-       console.log("DATA:" + JSON.stringify(data)); // muestro el return data; del archivo auth.service recibida por JSON en 
+    }else{
+      console.log("ERROR DE LOGEO ", data)
+    }
+    //  console.log("DATA:" + JSON.stringify(data)); // muestro el return data; del archivo auth.service recibida por JSON en 
     //   //console.log(data); // muestro el return data; del archivo auth.service recibida por JSON en 
-      
     //   this.ruta.navigate(['/web']); //vuelve a la ruta web.
      });
   }

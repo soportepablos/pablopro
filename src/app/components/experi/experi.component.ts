@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
-
 @Component({
   selector: 'app-experi',
   templateUrl: './experi.component.html',
@@ -11,7 +10,6 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ExperiComponent implements OnInit {
   
-
   // creo el formDatos para poder modificar..................
   public formDatos = new FormGroup({
     dttitle: new FormControl('',Validators.required),
@@ -27,24 +25,28 @@ export class ExperiComponent implements OnInit {
               private formBuilder:FormBuilder
   ) { }
  
-  //public edited = false;
-  public edited = true; //lo coloque true hasta rehacer con spring boot
-
+  public edited = false;
+  
   ngOnInit(): void {
     this.cargarData(); // trae lista para mostrar
-    //this.isLog(); // virifica si esta logeado
+    this.isLog(); // virifica si esta logeado
   }
 
-  // Verificar si esta logeado para saber si habilita la edicion o no
+  // VERIFICO SI ESTA LOGEADO Y SI EL USUARIO TIENE ROL DE EDICION
   isLog(){
-    this.authService.isAuth()
+
+    if (!localStorage.getItem("token")){
+       console.log ("EXPERI edicion SIN LOGEO")
+    }else {
+      this.authService.isAuth()
       .subscribe((result)=>{
-        if (result.user_role == "admin") {
-            this.edited = true;
-          }else{
-            this.edited = false;
-        }
-    });
+        if (result == "admin") {
+              this.edited = true;
+            }else{
+              this.edited = false;
+          }
+      });
+    }
   }
 
   /// CARGA EL LISTADO EXPERI OK
@@ -59,13 +61,9 @@ export class ExperiComponent implements OnInit {
   // TOMA LOS DATOS SEGUN ID SELECCIONADO Y REALIZA EL PREVIEW OK
   public dato:any = [];
   tomaDatos(id:any){
-    // console.log(id);
     this.authService.datoTipo(id)
       .subscribe((dati)=>{
         this.dato = dati;
-        // if (this.dato[0].dtstatus === 0){
-        //   this.dato[0].status = true;
-        // }else{ this.dato[0].status = false; }
         this.formDatos.patchValue(this.dato); 
       });
   }
@@ -76,7 +74,6 @@ export class ExperiComponent implements OnInit {
     .subscribe((result)=>{ /// si no me suscribo nunca llega a la API
       this.cargarData(); // trae lista para mostrar
     });
-    //console.log(this.formDatos.value);
   }
   
   // CREAR UN NUEVO  REGISTRO 

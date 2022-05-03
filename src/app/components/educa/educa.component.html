@@ -19,20 +19,20 @@
                 <ul *ngFor="let data of lista" class="timeline">
                     <li >
                         <!-- Boton ELIMINAR -->
-                        <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#eliminaEduca" data-whatever="{data.dt_id}">
-                            <a class="btn btn-trash btn-outline-light" href="#!" (click)="tomaDatos(data.dt_id)" >
+                        <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#eliminaEduca" data-whatever="{data.id}">
+                            <a class="btn btn-trash btn-outline-light" href="#!" (click)="tomaDatos(data.id)" >
                                 <i class="fa fa-trash "></i>
                             </a>
                         </div>
                         <!-- Boton MODIFICAR -->
-                        <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#modiEduca" data-whatever="{data.dt_id}">
-                            <a class="btn btn-edit btn-outline-light " href="#!" (click)="tomaDatos(data.dt_id)" >
+                        <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#modiEduca" data-whatever="{data.id}">
+                            <a class="btn btn-edit btn-outline-light " href="#!" (click)="tomaDatos(data.id)" >
                                 <i class="fa fa-pen"></i>
                             </a>
                         </div>
 
-                        <h5 class="p-1 bg-secondary text-white " >{{data.dt_year}} - {{data.dt_title}}</h5>
-                        <p>{{data.dt_text}}</p>
+                        <h5 class="p-1 bg-secondary text-white " >{{data.dtyear}} - {{data.dttitle}}</h5>
+                        <p>{{data.dttext}}</p>
                 
 
                     </li>
@@ -50,8 +50,8 @@
                                                                             <ul class="timeline">
                                                                                 <li>
                                                                                     <div>
-                                                                                        <p class="p-1 bg-secondary text-white">{{formDatos.value.dt_year}} - {{formDatos.value.dt_title}}</p>
-                                                                                        <p>{{formDatos.value.dt_text}}</p>
+                                                                                        <p class="p-1 bg-secondary text-white">{{formDatos.value.dtyear}} - {{formDatos.value.dttitle}}</p>
+                                                                                        <p>{{formDatos.value.dttext}}</p>
                                                                                         <br>
                                                                                     </div>
                                                                                 </li>
@@ -64,17 +64,17 @@
                                                                             <!-- <h2 class="experi-modal-title text-secondary text-uppercase mb-0">Formulario</h2> -->
                                                                         <div class="row">
                                                                             <div class="form-group col-2">
-                                                                                <label for="dt_year" class="col-form-label"><h6>Año:</h6></label>
-                                                                                <input type="text" class="form-control" id="dt_year" formControlName="dt_year">
+                                                                                <label for="dtyear" class="col-form-label"><h6>Año:</h6></label>
+                                                                                <input type="text" class="form-control" id="dtyear" formControlName="dtyear">
                                                                             </div>
                                                                             <div class="form-group col-10"> <!-- [value]="valTitulo" -->
-                                                                                <label for="dt_title" class="col-form-label"><h6>Titulo:</h6></label>
-                                                                                <input type="text" class="form-control" id="dt_title" formControlName="dt_title">
+                                                                                <label for="dttitle" class="col-form-label"><h6>Titulo:</h6></label>
+                                                                                <input type="text" class="form-control" id="dttitle" formControlName="dttitle">
                                                                             </div>
                                                                         </div>
                                                                             <div class="form-group">
-                                                                                <label for="dt_text" class="col-form-label"><h6>Informacion:</h6></label>
-                                                                                <textarea rows="4" class="form-control" id="dt_text" formControlName="dt_text"></textarea>
+                                                                                <label for="dttext" class="col-form-label"><h6>Informacion:</h6></label>
+                                                                                <textarea rows="4" class="form-control" id="dttext" formControlName="dttext"></textarea>
                                                                             </div>
                                                                             <div class="form-group form-check">
                                                                                 <input type="checkbox" class="form-check-input" id="estado" >
@@ -106,8 +106,8 @@
                                                                                 <ul class="timeline">
                                                                                     <li>
                                                                                         <div>
-                                                                                            <p class="p-1 bg-secondary text-white">{{formDatos.value.dt_year}} - {{formDatos.value.dt_title}}</p>
-                                                                                            <p>{{formDatos.value.dt_text}}</p>
+                                                                                            <p class="p-1 bg-secondary text-white">{{formDatos.value.dtyear}} - {{formDatos.value.dttitle}}</p>
+                                                                                            <p>{{formDatos.value.dttext}}</p>
                                                                                             <br>
                                                                                         </div>
                                                                                     </li>
@@ -134,17 +134,17 @@
                                                                         <form [formGroup]="formDatos" (submit)="nuevoEduca()">
                                                                         <div class="row">
                                                                             <div class="form-group col-2">
-                                                                                <label for="dt_year" class="col-form-label"><h6>Año:</h6></label>
-                                                                                <input type="text" class="form-control" id="dt_year" formControlName="dt_year">
+                                                                                <label for="dtyear" class="col-form-label"><h6>Año:</h6></label>
+                                                                                <input type="text" class="form-control" id="dtyear" formControlName="dtyear">
                                                                             </div>
                                                                             <div class="form-group col-10"> 
-                                                                                <label for="dt_title" class="col-form-label"><h6>Titulo:</h6></label>
-                                                                                <input type="text" class="form-control" id="dt_title" formControlName="dt_title" >
+                                                                                <label for="dttitle" class="col-form-label"><h6>Titulo:</h6></label>
+                                                                                <input type="text" class="form-control" id="dttitle" formControlName="dttitle" >
                                                                             </div>
                                                                         </div>
                                                                             <div class="form-group">
-                                                                                <label for="dt_text" class="col-form-label"><h6>Informacion:</h6></label>
-                                                                                <textarea rows="4" class="form-control" id="dt_text" formControlName="dt_text"></textarea>
+                                                                                <label for="dttext" class="col-form-label"><h6>Informacion:</h6></label>
+                                                                                <textarea rows="4" class="form-control" id="dttext" formControlName="dttext"></textarea>
                                                                             </div>
                                                                             <div class="form-group form-check">
                                                                                 <input type="checkbox" class="form-check-input" id="estado" >

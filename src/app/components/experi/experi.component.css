@@ -17,6 +17,11 @@ ul.timeline > li {
   /* margin: 20px 0; */
   padding-left: 20px;
 }
+
+bg-titulo {
+  background-color:#68bfd4;
+}
+
 ul.timeline > li:before {
   content: ' ';
   background: white;
