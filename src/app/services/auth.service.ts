@@ -3,6 +3,7 @@ import { Component, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment'
 
 @Injectable({
   //como es root no hace falta declarar en el app.module
@@ -10,15 +11,15 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
   //para hacer uso de esto tenemos que utilizar el cliente HTTP - consultas http
+  baseUrl: string = environment.baseUrl;
 
-  private URL = 'http://localhost:8080/login'; // envio el form con usuario y pass
-  private urlDatos = 'http://localhost:8080/datos/tema'; //le envio theme (experi o educa)
-  private urlTest =  'http://localhost:8080/login/test'; // envio token y me devuelve usuario y rol
-  private urlDato = 'http://localhost:8080/datos/'; // trae el registro con los datos segun ID enviado
-  private urlNew = 'http://localhost:8080/datos/new'; // trae el registro con los datos segun ID enviado
-  private urlMod = 'http://localhost:8080/datos/update'; // trae el registro con los datos segun ID enviado
-  private urlDel = 'http://localhost:8080/datos/delete/'; // elimina registro
-
+  private URL = this.baseUrl + '/login'; // envio el form con usuario y pass
+  private urlDatos = this.baseUrl + '/datos/tema'; //le envio theme (experi o educa)
+  private urlTest =  this.baseUrl + '/login/test'; // envio token y me devuelve usuario y rol
+  private urlDato = this.baseUrl + '/datos/'; // trae el registro con los datos segun ID enviado
+  private urlNew = this.baseUrl + '/datos/new'; // trae el registro con los datos segun ID enviado
+  private urlMod = this.baseUrl + '/datos/update'; // trae el registro con los datos segun ID enviado
+  private urlDel = this.baseUrl + '/datos/delete/'; // elimina registro
 
   constructor(private http: HttpClient) { 
     //para saber si mi servicio esta corriendo
