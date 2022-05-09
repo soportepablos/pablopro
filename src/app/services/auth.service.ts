@@ -71,23 +71,4 @@ export class AuthService {
     return this.http.post(this.urlNew,regi);
   } 
 
-
-  ////////////////////////////////
-
-
-  // Trae el registro para modificar segun ID seleccionado
-  // datoTipo(id:any):Observable<any>
-  // {
-  //   console.log(this.http.post<any[]>(this.urlDato,id));
-  //   return this.http.post<any[]>(this.urlDato,id);
-  //   //  return this.http.post(this.urlDato,{dtid:id});
-     
-  // } 
-
-
-
-  // MODIFICAR REGISTRO
-
-
 }
-  /// este servicio lo consumismo desde nuestro login por lo que instanciamos ahi.
