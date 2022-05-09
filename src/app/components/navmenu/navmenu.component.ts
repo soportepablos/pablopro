@@ -21,7 +21,7 @@ export class NavmenuComponent implements OnInit {
   // Verificar si esta logeado para saber si habilita la edicion o no
   isLog(){
     if (!localStorage.getItem("token")){
-      console.log("NavMenu verifica SIN LOGEO");
+      // console.log("NavMenu verifica SIN LOGEO");
     }else{
       this.authService.isAuth()
         .subscribe((result)=>{

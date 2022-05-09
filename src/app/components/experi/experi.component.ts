@@ -36,7 +36,7 @@ export class ExperiComponent implements OnInit {
   isLog(){
 
     if (!localStorage.getItem("token")){
-       console.log ("EXPERI edicion SIN LOGEO")
+      //  console.log ("EXPERI edicion SIN LOGEO")
     }else {
       this.authService.isAuth()
       .subscribe((result)=>{
@@ -103,16 +103,6 @@ export class ExperiComponent implements OnInit {
     });
     //console.log(this.formDatos.value.dtid);
   }
-
- 
-  // public lista:any = [];
-  // cargarData(){
-  //   this.authService.datos()
-  //     .subscribe(dt => {
-  //       this.lista = dt;
-  //   })
-  // }
-
   
 }
 

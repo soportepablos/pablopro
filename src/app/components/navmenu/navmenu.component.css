@@ -25,45 +25,7 @@
   a.nav-link:hover {
     color: #1abc9c;
   }
-  /* #menuVar.navbar-nav li.nav-item a.nav-link:active, #menuVar.navbar-nav li.nav-item a.nav-link:focus {
-    color: #fff;
-  }
-  #menuVar.navbar-nav li.nav-item a.nav-link.active {
-    color: #1abc9c;
-  }
-  #menuVar.navbar-toggler {
-    font-size: 80%;
-    padding: 0.8rem;
-  }
   
-  @media (min-width: 992px) {
-    #menuVar{
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
-      transition: padding-top 0.3s, padding-bottom 0.3s;
-    }
-    #menuVar.navbar-brand {
-      font-size: 1.75em;
-      transition: font-size 0.3s;
-    }
-    #menuVar.navbar-nav {
-      margin-top: 0;
-    }
-    #menuVar.navbar-nav > li.nav-item > a.nav-link.active {
-      color: #fff;
-      background: #1abc9c;
-    }
-    #menuVar.navbar-nav > li.nav-item > a.nav-link.active:active, #menuVar.navbar-nav > li.nav-item > a.nav-link.active:focus, #menuVar.navbar-nav > li.nav-item > a.nav-link.active:hover {
-      color: #fff;
-      background: #1abc9c;
-    }
   
-    #menuVar.navbar-shrink {
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-    }
-    #menuVar.navbar-shrink .navbar-brand {
-      font-size: 1.5em;
-    }
-  } */
+ 
 

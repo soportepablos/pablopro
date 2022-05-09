@@ -36,7 +36,7 @@ export class EducaComponent implements OnInit {
   isLog(){
 
     if (!localStorage.getItem("token")){
-       console.log ("EDUCA edicion SIN LOGEO")
+       //console.log ("EDUCA edicion SIN LOGEO")
     }else {
       this.authService.isAuth()
       .subscribe((result)=>{
@@ -103,16 +103,6 @@ export class EducaComponent implements OnInit {
     });
     //console.log(this.formDatos.value.dtid);
   }
-
- 
-  // public lista:any = [];
-  // cargarData(){
-  //   this.authService.datos()
-  //     .subscribe(dt => {
-  //       this.lista = dt;
-  //   })
-  // }
-
   
 }
 

@@ -18,7 +18,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CrudatosComponent } from './components/crudatos/crudatos.component';
+// import { CrudatosComponent } from './components/crudatos/crudatos.component';
 
 
 
@@ -35,7 +35,7 @@ import { CrudatosComponent } from './components/crudatos/crudatos.component';
     FooterComponent,
     LoginComponent,
     WebComponent,
-    CrudatosComponent,
+    // CrudatosComponent,
   ],
   imports: [
     BrowserModule,

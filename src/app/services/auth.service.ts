@@ -23,7 +23,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { 
     //para saber si mi servicio esta corriendo
-    console.log("Lectura de la Api corriendo!");
+    console.log("Lectura de la Api OK!");
   }
   
   // metodo para iniciar la sesion recibe las credenciales del usuario 

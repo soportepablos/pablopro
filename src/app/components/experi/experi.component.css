@@ -18,10 +18,6 @@ ul.timeline > li {
   padding-left: 20px;
 }
 
-bg-titulo {
-  background-color:#68bfd4;
-}
-
 ul.timeline > li:before {
   content: ' ';
   background: white;
@@ -69,6 +65,9 @@ ul.timeline > li:before {
   background-color: #fdccaf;
 }
 
+bg-titulo {
+  background-color:#68bfd4;
+}
 
 /* FONDO DIV */
 .portada{

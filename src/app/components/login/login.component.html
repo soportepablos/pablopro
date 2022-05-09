@@ -1,4 +1,4 @@
-<!-- Portfolio Modal 1-->
+<!-- Login-->
 <div class="container ">
     <form [formGroup]="form" class="m-5" (ngSubmit)="logIn($event)" >
     <div class="row justify-content-center">
@@ -21,9 +21,12 @@
             <!-- (click)="logIn()" -->
         </div>
     </div>
-    <div class="row text-center justify-content-center" *ngIf="username?.errors && username?.touched">
+    <div class="row text-center justify-content-center" *ngIf="username?.errors && username?.touched || errorLog == true ">
         <p *ngIf="username?.hasError('required')" class="text-danger"> Informacion Requerida</p>
         <p *ngIf="username?.hasError('minlength')" class="text-danger"> Longitud Requerida</p>
     </div>
 </div>
 </form>
+<div class="row text-center justify-content-center">
+<p *ngIf="errorLog == true" class="text-danger">Usuario o Password incorrectos!</p>
+</div>

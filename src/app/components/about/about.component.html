@@ -1,23 +1,79 @@
 <!-- About -->
 <section class="page-section mb-0">
-    <div class="container d-flex align-items-center flex-column">
-        <!-- About Section Heading-->
-        <h2 > Full Stack Developer Jr</h2>
+    <div class="container d-flex align-items-center flex-column" *ngFor="let data of lista" >
+        <div class="row d-flex justify-content-center">
+            <!-- About Section Heading-->
+            <div class="d-flex align-items-center flex-column">
+                <h2 > {{data.dttitle}}</h2>
+            </div>
+        </div>
         <!-- About Section Content-->
         <div class="row">
+
             <div class="d-flex col-lg-1 align-items-center"></div>
-            <div class="d-flex col-lg-3 justify-content-center "><p class="lead"><img src="../assets/img/perfil.png" width="200"></div>
+            <div class="d-flex col-lg-3 justify-content-center ">
+                <p class="lead"><img src="../assets/img/perfil.png" width="200">
+            </div>                  
+              
             <div class="d-flex col-lg-7 align-items-center ">
+                <span *ngIf="edited" data-bs-toggle="modal" data-bs-target="#modiAbout" data-whatever="{data.id}">
+                    <a class="btn btn-edit btn-outline-light " href="#!" (click)="tomaDatos(data.id)" >
+                        <i class="fa fa-pen " ></i>
+                    </a>
+                </span>
                 <p>
-                    Analista de sistemas. Programador y diseñador Web, Técnico Informático 
-                    Me inicié en la programación WEB allá en el año 1995. Trabajé profesionalmente como diseñador y programador web, 
-                    tanto en front-end como back-end, PHP con MySQL, asi tambien con JavaScript y CSS3.<br>
-                    Como soporte adquiri conocieminto en comunicaciones gracias a la certificacionde CCNA de CISCO asi como la experiencia adquirida
-                    en diversos trabajos realizados tanto fisico como logicos en plataformas cliente/servidor, desde el 2006 formo parte de la Institucion 
-                    Direccion Naional de Migraciones como Supervisor Regional de la Region II y XI, no obstante continuo ejerciendo como desarrollaor web 
-                    Freelance aprovechando mi conocimiento como Full Stack Developer Jr.
+                    {{data.dttext}} 
                 </p>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Modal MODIFICAR-->
+<div class="modal fade" id="modiAbout" tabindex="-1" aria-labelledby="1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" >
+        <div class="modal-content">
+            <div class="modal-header"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+            <div class="modal-body ">
+                
+            <div class="preview">
+                <p><em>Vista previa....</em></p>
+                <ul class="timeline">
+                    <li>
+                        <div>
+                            <p class="p-1 text-white bg-secondary">{{formDatos.value.dtyear}} - {{formDatos.value.dttitle}}</p>
+                            <p>{{formDatos.value.dttext}}</p>
+                            <br>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+                
+            <hr>    
+            <h5>Formulario.</h5>
+            <form [formGroup]="formDatos"  >
+              
+            <div class="row">
+              
+                <div class="form-group col-10"> <
+                    <label for="dttitle" class="col-form-label"><h6>Titulo:</h6></label>
+                    <input type="text" class="form-control" id="dttitle" formControlName="dttitle">
+                </div>
+            </div>
+                <div class="form-group">
+                    <label for="dttext" class="col-form-label"><h6>Informacion:</h6></label>
+                    <textarea rows="4" class="form-control" id="dttext" formControlName="dttext"></textarea>
+                </div>
+           
+                
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="actualizar()">Actualizar</button>
+                </div>
+            </form>
+
+        </div>
+        </div>
+    </div>
+</div>
+<!-- FIN MODAL MODIFICAR -->

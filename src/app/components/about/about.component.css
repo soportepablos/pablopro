@@ -1,0 +1,20 @@
+/* Boton Edicion */
+.btn-edit {
+    background-color: rgb(57, 151, 70);
+    border-color: rgb(0, 0, 0);
+    display: inline-flex;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+    float: right;
+  }
+
+  /* MODAL */
+.preview {
+    background-color: #f8f4dd;
+  }
+  .preview-eliminar {
+    background-color: #fdccaf;
+  }

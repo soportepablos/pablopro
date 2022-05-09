@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
 
   //injectamos formBuilder y el servicio de autenticacion.
   public edited:boolean = false;
+  errorLog = false;
+
   constructor (private formBuilder:FormBuilder,private authService:AuthService, private ruta:Router) {
     this.form=this.formBuilder.group(
       { 
@@ -27,6 +29,7 @@ export class LoginComponent implements OnInit {
     this.isLog();
   }
 
+
   ///////// obtener email y pass para validar miesntras escribo (obtengo las propiedades////////////////////
   get username() {
     return this.form.get('username');
@@ -34,24 +37,26 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.form.get('password');
   }
+ 
 
   ///////// DESLOGEO 
   isLog(){
     if (!localStorage.getItem("token")){
-      console.log("Login verifico SIN LOGEO");
+      //console.log("Login verifico SIN LOGEO");
     }else{
       this.authService.isAuth().subscribe((result)=>{
-        console.log("Se deslogeo " , result );
+        // console.log("Se deslogeo " , result );
           if (result == "admin" || result == "guest") {
             localStorage.clear();
             // this.edited = false;
-            console.log("Se deslogeo " , result );
+            // console.log("Se deslogeo " , result );
             this.ruta.navigate(['/web']); //vuelve a la ruta web.
           }
       });
     };
   }
-
+  
+ 
   //// LLAMADO PARA LOGEO
   logIn(event:Event) {
     event.preventDefault;
@@ -63,11 +68,13 @@ export class LoginComponent implements OnInit {
     // guardo en el localStorage
     if (data !== "false"){
       localStorage.setItem('token', data );
-      console.log("datos devueltos del logeo: ",data);
+      // console.log("datos devueltos del logeo: ",data);
+      this.errorLog = false;
       this.ruta.navigate(['/web']); //vuelve a la ruta web.
 
     }else{
       console.log("ERROR DE LOGEO ", data)
+      this.errorLog = true;
     }
     //  console.log("DATA:" + JSON.stringify(data)); // muestro el return data; del archivo auth.service recibida por JSON en 
     //   //console.log(data); // muestro el return data; del archivo auth.service recibida por JSON en 
