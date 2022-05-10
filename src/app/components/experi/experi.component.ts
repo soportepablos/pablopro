@@ -64,12 +64,14 @@ export class ExperiComponent implements OnInit {
     this.authService.datoTipo(id)
       .subscribe((dati)=>{
         this.dato = dati;
-        this.formDatos.patchValue(this.dato); 
+        if (this.dato.dtstatus == 0) { this.dato.dtstatus = false;} else {this.dato.dtstatus = true;};
+        this.formDatos.patchValue(this.dato);
       });
   }
  
   ///MODIFICAR FORMULARIO
   actualizar() {
+    if (this.formDatos.value.dtstatus == true) { this.formDatos.value.dtstatus = 1;} else {this.formDatos.value.dtstatus = 0;};
     this.authService.regMod(this.formDatos.value)
     .subscribe((result)=>{ /// si no me suscribo nunca llega a la API
       this.cargarData(); // trae lista para mostrar
@@ -87,7 +89,8 @@ export class ExperiComponent implements OnInit {
   nuevoExperi() {
     // console.log(this.formDatos.value);
     this.formDatos.value.dttheme = "experi";
-    this.formDatos.value.dtstatus = 0; // SOLUCIONAR EL TEMA DE STATUS BOOLEANO
+    if (this.formDatos.value.dtstatus == true) { this.formDatos.value.dtstatus = 1;} else {this.formDatos.value.dtstatus = 0;};
+    // this.formDatos.value.dtstatus = 0; 
     this.authService.regNew(this.formDatos.value)
     .subscribe((result)=>{ 
       this.cargarData(); // trae lista para mostrar

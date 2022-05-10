@@ -14,7 +14,7 @@
                 <h2 class="p-3 bg-secondary text-center text-white">Experiencia</h2>
                 
                 <ul *ngFor="let data of lista" class="timeline">
-                    <li>
+                    <li [ngStyle]="{'background-color': data.dtstatus == 1 ? '#bde4fc' : '' }">
                         <!-- Boton ELIMINAR -->
                         <div *ngIf="edited" data-bs-toggle="modal" data-bs-target="#eliminaExperi" data-whatever="{data.id}">
                             <a class="btn btn-trash btn-outline-light" href="#!" (click)="tomaDatos(data.id)" >
@@ -42,7 +42,7 @@
                                         <p><em>Vista previa....</em></p>
                                         <ul class="timeline">
                                             <li>
-                                                <div>
+                                                <div >
                                                     <p class="p-1 text-white bg-secondary">{{formDatos.value.dtyear}} - {{formDatos.value.dttitle}}</p>
                                                     <p>{{formDatos.value.dttext}}</p>
                                                     <br>
@@ -70,14 +70,15 @@
                                             <textarea rows="4" class="form-control" id="dttext" formControlName="dttext"></textarea>
                                         </div>
                                         <div class="form-group form-check">
-                                            <input type="checkbox" class="form-check-input" id="estado" >
-                                            <label for="estado" >Estado -<i> Resalta la informacion </i></label>
+                                            <input type="checkbox" class="form-check-input" id="dtstatus" formControlName="dtstatus">
+                                            <label for="dtstatus" >Estado -<i> Resalta la informacion </i></label>
                                         </div>
                                         
                                         <div class="modal-footer">
                                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
                                         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="actualizar()">Actualizar</button>
                                         </div>
+
                                     </form>
 
                                 </div>
@@ -140,8 +141,8 @@
                                             <textarea rows="4" class="form-control" id="dttext" formControlName="dttext"></textarea>
                                         </div>
                                         <div class="form-group form-check">
-                                            <input type="checkbox" class="form-check-input" id="estado" >
-                                            <label for="estado" >Estado -<i> Resalta la informacion </i></label>
+                                            <input type="checkbox" class="form-check-input" id="dtstatus"  formControlName="dtstatus">
+                                            <label for="dtstatus" >Estado -<i> Resalta la informacion </i></label>
                                         </div>
                                         
                                         <div class="modal-footer">
