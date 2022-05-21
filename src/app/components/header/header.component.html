@@ -1,20 +1,25 @@
 <!-- Masthead-->
 <header class="masthead bg-primary text-white text-center" >
-    <div class="container d-flex align-items-center flex-column">
+    <div class="container d-flex align-items-center flex-column" *ngFor="let data of lista">
         <!-- Masthead Avatar Image-->
         <!-- <img class="masthead-avatar mb-2" src="../assets/img/avatar.svg" alt="..." /> -->
         <!-- Masthead Heading--><br><br>
+        <span *ngIf="edited" data-bs-toggle="modal" data-bs-target="#modiHead" data-whatever="{data.id}">
+            <a class="btn btn-edit btn-outline-light " href="#!" (click)="tomaDatos(data.id)" >
+                <i class="fa fa-pen " ></i>
+            </a>
+        </span>
         <hr class="line">
         <!-- <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
             <div class="divider-custom-icon"><i class="fas fa-code"></i></div>
             <div class="divider-custom-line"></div>
         </div> -->
-        <h1 class="masthead-heading text-uppercase mb-0 ">Pablo Sanchez</h1>
+        <h1 class="masthead-heading text-uppercase mb-0 ">{{data.dttitle}}</h1>
         <hr class="line">
         <!-- Icon Divider-->
         <!-- Masthead Subheading-->
-        <p class="font-weight-light mb-0 "> Full Stack Developer Jr. </p>
+        <p class="font-weight-light mb-0 "> {{data.dttext}} </p>
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
             <div class="divider-custom-icon"><i class="fas fa-code"></i></div>
@@ -22,3 +27,54 @@
         </div>
     </div>
 </header>
+<!-- Modal MODIFICAR-->
+<div class="modal fade" id="modiHead" tabindex="-1" aria-labelledby="1" aria-hidden="true">
+    <div class="modal-dialog modal-x3" >
+        <div class="modal-content">
+            <div class="modal-header"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+            <div class="modal-body ">
+                
+            <div class="preview mastheadpre text-white text-center">
+                <div class="container d-flex align-items-center flex-column">
+          
+                    <hr class="line">
+           
+                    <h1 class="mastheadpre-heading text-uppercase mb-0 ">{{formDatos.value.dttitle}}</h1>
+                    <hr class="line">
+                    <!-- Icon Divider-->
+                    <!-- Masthead Subheading-->
+                    <p class="font-weight-light mb-0 "> {{formDatos.value.dttext}} </p>
+                    
+                </div>
+            </div>
+                
+            <hr>    
+            <h5>Formulario.</h5>
+            <form [formGroup]="formDatos"  >
+              
+            <div class="row">
+              
+                <div class="form-group col-10">
+                    <label for="dttitle" class="col-form-label"><h6>Titulo:</h6></label>
+                    <input type="text" class="form-control" id="dttitle" formControlName="dttitle">
+                </div>
+           
+                <div class="form-group">
+                    <label for="dttext" class="col-form-label"><h6>Informacion:</h6></label>
+                    <input type="text" class="form-control" id="dttext" formControlName="dttext">
+
+                    <!-- <textarea rows="2" class="form-control" id="dttext" formControlName="dttext"></textarea> -->
+                </div>
+            </div>
+                
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="actualizar()">Actualizar</button>
+                </div>
+            </form>
+
+        </div>
+        </div>
+    </div>
+</div>
+<!-- FIN MODAL MODIFICAR -->

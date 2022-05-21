@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -17,16 +18,19 @@ export class AboutComponent implements OnInit {
     dtyear: new FormControl('',Validators.required),
     dtstatus: new FormControl(''),
     id: new FormControl(''),
-    dttheme: new FormControl('')
+    dttheme: new FormControl(''),
+    dtimage: new FormControl('')
   });
-  
+
+    
   constructor(private authService:AuthService, 
               private ruta:Router,
-              private formBuilder:FormBuilder
+              private formBuilder:FormBuilder,
+              private sanitizer: DomSanitizer
   ) { }
  
   public edited = false;
-  
+
   ngOnInit(): void {
     this.cargarData(); // trae lista para mostrar
     this.isLog(); // virifica si esta logeado
@@ -44,6 +48,7 @@ export class AboutComponent implements OnInit {
               this.edited = true;
             }else{
               this.edited = false;
+              
           }
       });
     }
@@ -55,26 +60,44 @@ export class AboutComponent implements OnInit {
     this.authService.datos("about")
       .subscribe((result)=>{
         this.lista = result;
+     
     });
   }
 
-   // TOMA LOS DATOS SEGUN ID SELECCIONADO Y REALIZA EL PREVIEW OK
-   public dato:any = [];
-   tomaDatos(id:any){
-     this.authService.datoTipo(id)
-       .subscribe((dati)=>{
-         this.dato = dati;
-         this.formDatos.patchValue(this.dato); 
-       });
-   }
+  // TOMA LOS DATOS SEGUN ID SELECCIONADO Y REALIZA EL PREVIEW OK
+  public dato:any = [];
+  tomaDatos(id:any){
+    this.authService.datoTipo(id)
+      .subscribe((dati)=>{
+        this.dato = dati;
+        this.formDatos.patchValue(this.dato); 
+      });
+  }
 
-    ///MODIFICAR FORMULARIO
+  ///////////////////  IMAGEN
+  cargarImg(event:any){
+    // console.log(event);
+    // console.log(event.target);
+    // console.log(event.target.files);
+    let archivo = event.target.files;
+    let reader = new FileReader();
+    reader.readAsDataURL(archivo[0])
+    //declaracion anomina sin declaracion
+    reader.onloadend = () => {
+      //console.log(reader.result);
+      this.formDatos.value.dtimage = reader.result;
+    }
+  }
+  //////
+
+  ///MODIFICAR FORMULARIO
   actualizar() {
-    this.authService.regMod(this.formDatos.value)
-    .subscribe((result)=>{ /// si no me suscribo nunca llega a la API
+      this.authService.regMod(this.formDatos.value)
+      .subscribe((result)=>{ /// si no me suscribo nunca llega a la API
       this.cargarData(); // trae lista para mostrar
     });
   }
+  
 
 
 }

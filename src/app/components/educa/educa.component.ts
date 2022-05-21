@@ -17,7 +17,8 @@ export class EducaComponent implements OnInit {
     dtyear: new FormControl('',Validators.required),
     dtstatus: new FormControl(''),
     id: new FormControl(''),
-    dttheme: new FormControl('')
+    dttheme: new FormControl(''),
+    dtimage: new FormControl('')
   });
   
   constructor(private authService:AuthService, 
@@ -71,6 +72,7 @@ export class EducaComponent implements OnInit {
  
   ///MODIFICAR FORMULARIO
   actualizar() {
+    this.formDatos.value.dtimage = "0";
     if (this.formDatos.value.dtstatus == true) { this.formDatos.value.dtstatus = 1;} else {this.formDatos.value.dtstatus = 0;};
     this.authService.regMod(this.formDatos.value)
     .subscribe((result)=>{ /// si no me suscribo nunca llega a la API
@@ -87,6 +89,7 @@ export class EducaComponent implements OnInit {
 
   // INSERTA NUEVO REGISTRO
   nuevoEduca() {
+    this.formDatos.value.dtimage = "0";
     // console.log(this.formDatos.value);
     this.formDatos.value.dttheme = "educa";
     if (this.formDatos.value.dtstatus == true) { this.formDatos.value.dtstatus = 1;} else {this.formDatos.value.dtstatus = 0;};
