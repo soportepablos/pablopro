@@ -14,7 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { WebComponent } from './components/web/web.component';
 
 import { RouteModule } from './route/route.module';
-import {APP_BASE_HREF} from '@angular/common';
+import {APP_BASE_HREF, HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -40,7 +40,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ {provide: APP_BASE_HREF, useValue: '/'} ],
+  providers: [  {provide: APP_BASE_HREF, useValue: '/'},
+                { provide: LocationStrategy, useClass: HashLocationStrategy } 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
