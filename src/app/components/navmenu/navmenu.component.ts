@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-navmenu',
@@ -14,18 +14,18 @@ export class NavmenuComponent implements OnInit {
   // lo de adentro de () injecto el servicio
   constructor( 
     private authService:AuthService,
-    private location:Location,
-    private ruta:Router
+    private location: Location
     ) { }
 
   public edited = false;
   ngOnInit(): void {
-    this.isLog();
+    // this.isLog();
   }
 
   // Verificar si esta logeado para saber si habilita la edicion o no
   isLog(){
     if (!localStorage.getItem("token")){
+      console.log("ERROR NO ESTA LOGEADO");
       // console.log("NavMenu verifica SIN LOGEO");
     }else{
       this.authService.isAuth()
@@ -40,10 +40,5 @@ export class NavmenuComponent implements OnInit {
   }
 
 
-  irWeb() {
-    // this.location.go('/logeo');
-    this.ruta.navigateByUrl('../logeo');
-    // this.ruta.navigate(['logeo']); //vuelve a la ruta web.
-  }
-  
+
 }

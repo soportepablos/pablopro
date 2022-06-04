@@ -42,7 +42,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule
   ],
   providers: [  {provide: APP_BASE_HREF, useValue: '/'},
-                { provide: LocationStrategy, useClass: HashLocationStrategy } 
+                { provide: LocationStrategy, useClass: PathLocationStrategy } 
   ], 
   bootstrap: [AppComponent]
 })
