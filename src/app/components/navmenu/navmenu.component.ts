@@ -41,7 +41,8 @@ export class NavmenuComponent implements OnInit {
 
 
   irWeb() {
-    this.location.replaceState('/logeo');
+    // this.location.go('/logeo');
+    this.ruta.navigateByUrl('../logeo');
     // this.ruta.navigate(['logeo']); //vuelve a la ruta web.
   }
   
