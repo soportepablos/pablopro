@@ -13,13 +13,13 @@
                 <li class="nav-item mx-0 p-1"><a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/in/pablo-sanchez-sistemas" target="_blanck"><i class="fab fa-fw fa-linkedin-in"></i></a></li>
                 <li class="nav-item mx-0 p-1 "><a class="btn btn-outline-light btn-social" href="https://www.instagram.com/pablosupport" target="_blanck"><i class="fab fa-fw fa-instagram"></i></a></li>
                 
-                <li class="nav-item mx-0 p-1"><a *ngIf="!edited" class="nav-link py-3 px-0 px-lg-3 rounded" href="#" routerLink="/logeo">Login</a></li> 
+                <li class="nav-item mx-0 p-1"><a *ngIf="!edited" class="nav-link py-3 px-0 px-lg-3 rounded" href="#" (click)="irWeb()" >Login</a></li> 
                 <li class="nav-item mx-0 p-1"><a *ngIf="edited" class="nav-link py-3 px-0 px-lg-3 rounded" href="#" routerLink="/logeo">Logout</a></li> 
             </ul>
         </div>
     </div>
 </nav>
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
                     
 
 

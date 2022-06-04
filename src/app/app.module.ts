@@ -14,10 +14,11 @@ import { LoginComponent } from './components/login/login.component';
 import { WebComponent } from './components/web/web.component';
 
 import { RouteModule } from './route/route.module';
-import {APP_BASE_HREF, HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {APP_BASE_HREF, HashLocationStrategy, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -41,8 +42,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule
   ],
   providers: [  {provide: APP_BASE_HREF, useValue: '/'},
-                { provide: LocationStrategy, useClass: HashLocationStrategy } 
-  ],
+                { provide: LocationStrategy, useClass: PathLocationStrategy } 
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// import {APP_BASE_HREF, HashLocationStrategy, LocationStrategy} from '@angular/common';
+// providers: [  {provide: APP_BASE_HREF, useValue: '/'},
+//               { provide: LocationStrategy, useClass: HashLocationStrategy } 
+// ],  

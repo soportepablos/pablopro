@@ -7,17 +7,17 @@ import { LoginComponent } from '../components/login/login.component';
 import { WebComponent } from '../components/web/web.component';
 
 const routes: Routes = [
+  { path: '', pathMatch:'full', redirectTo:'/web'},
   { path: 'web', component: WebComponent },
-  { path: 'logeo', component:LoginComponent},
-  { path: 'logout', component:LoginComponent},
-  { path: '**', pathMatch:'full', redirectTo:'web'}
+  { path: 'logeo', component:LoginComponent}
+  // { path: 'logout', component:LoginComponent}
 ];
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes) //, { useHash: true }
   ],
   exports: [RouterModule],
 })

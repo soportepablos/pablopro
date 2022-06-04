@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     this.isLog();
   }
 
-
   ///////// obtener email y pass para validar miesntras escribo (obtengo las propiedades////////////////////
   get username() {
     return this.form.get('username');
@@ -38,7 +37,6 @@ export class LoginComponent implements OnInit {
     return this.form.get('password');
   }
  
-
   ///////// DESLOGEO 
   isLog(){
     if (!localStorage.getItem("token")){
@@ -50,13 +48,12 @@ export class LoginComponent implements OnInit {
             localStorage.clear();
             // this.edited = false;
             // console.log("Se deslogeo " , result );
-            this.ruta.navigate(['/web']); //vuelve a la ruta web.
+            this.ruta.navigate(['/']); //vuelve a la ruta web.
           }
       });
     };
   }
-  
- 
+   
   //// LLAMADO PARA LOGEO
   logIn(event:Event) {
     event.preventDefault;
@@ -70,7 +67,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', data );
       // console.log("datos devueltos del logeo: ",data);
       this.errorLog = false;
-      this.ruta.navigate(['/web']); //vuelve a la ruta web.
+      this.ruta.navigate(['/']); //vuelve a la ruta web.
 
     }else{
       console.log("ERROR DE LOGEO ", data)
