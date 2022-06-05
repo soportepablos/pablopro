@@ -1,6 +1,10 @@
 # Pablopro
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+# Base de Datos.
+### Backup de la Base de Datos.
+ProyectoIntegrador.sql - 
+### Diagrama de la Base de Datos.
+DiagramaProyecto.mwb - 
 
 ## Development server
 
