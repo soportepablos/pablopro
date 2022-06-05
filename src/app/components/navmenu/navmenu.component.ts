@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,12 +15,13 @@ export class NavmenuComponent implements OnInit {
   // lo de adentro de () injecto el servicio
   constructor( 
     private authService:AuthService,
-    private location: Location
+    private location: Location,
+    private router:Router
     ) { }
 
   public edited = false;
   ngOnInit(): void {
-    // this.isLog();
+    this.isLog();
   }
 
   // Verificar si esta logeado para saber si habilita la edicion o no
@@ -38,7 +40,11 @@ export class NavmenuComponent implements OnInit {
       });
     }
   }
-
+  irWeb() {
+    this.router.navigate(['/logeo']);
+    // this.location.replaceState("/logeo"); //vuelve a la ruta web.
+    // this.location.replaceState("/logeo");
+  }
 
 
 }
